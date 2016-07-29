@@ -20,5 +20,11 @@ namespace MiVetService
         {
             return "Hello World";
         }
+
+        [WebMethod]
+        public void Test(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis)
+        {
+
+        }
     }
 }
