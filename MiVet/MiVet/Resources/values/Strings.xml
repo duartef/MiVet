@@ -2,4 +2,5 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">MiVet</string>
+    <string name="facebook_app_id">171167906634823</string>
 </resources>

@@ -1,18 +1,13 @@
-﻿using System;
-using Android.App;
-using Android.Content;
-using Android.Runtime;
-using Android.Views;
+﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Android.Content;
 
 namespace MiVet
 {
-    [Activity(Label = "MiVet", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Prueba", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -23,8 +18,16 @@ namespace MiVet
             // Get our button from the layout resource,
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.MyButton);
+            button.Click += Button_Click;
+        }
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+        private void Button_Click(object sender, System.EventArgs e)
+        {
+            string usuario = "San Jorge";
+            Intent intent = new Intent(this, typeof(HomeActivity));
+            intent.PutExtra("vetId", 1);
+            intent.PutExtra("vetNombre", usuario);
+            StartActivity(intent);
         }
     }
 }
