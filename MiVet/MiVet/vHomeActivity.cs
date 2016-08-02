@@ -12,8 +12,8 @@ using Android.Widget;
 
 namespace MiVet
 {
-    [Activity(Label = "HomeVetActivity")]
-    public class HomeVetActivity : Activity
+    [Activity(Label = "vHomeActivity")]
+    public class vHomeActivity : Activity
     {
         int vetId;
         string vetNombre;
@@ -34,17 +34,26 @@ namespace MiVet
 
         private void BtVisitas_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Intent intent = new Intent(this, typeof(vVisitasActivity));
+            intent.PutExtra("vetId", vetId);
+            intent.PutExtra("vetNombre", vetNombre);
+            StartActivity(intent);
         }
 
         private void BtAlta_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Intent intent = new Intent(this, typeof(vAltaAnimalActivity));
+            intent.PutExtra("vetId", vetId);
+            intent.PutExtra("vetNombre", vetNombre);
+            StartActivity(intent);
         }
 
         private void BtBuscar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Intent intent = new Intent(this, typeof(vBuscarAnimalActivity));
+            intent.PutExtra("vetId", vetId);
+            intent.PutExtra("vetNombre", vetNombre);
+            StartActivity(intent);
         }
     }
 }
