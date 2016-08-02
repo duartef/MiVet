@@ -1939,6 +1939,9 @@ namespace MiVet
 			// aapt resource value: 0x7f0a003f
 			public const int buttonPanel = 2131361855;
 			
+			// aapt resource value: 0x7f0a0096
+			public const int calendar = 2131361942;
+			
 			// aapt resource value: 0x7f0a0074
 			public const int cancel_action = 2131361908;
 			
@@ -2082,6 +2085,9 @@ namespace MiVet
 			
 			// aapt resource value: 0x7f0a008f
 			public const int lstMascotas = 2131361935;
+			
+			// aapt resource value: 0x7f0a0097
+			public const int lstVisitas = 2131361943;
 			
 			// aapt resource value: 0x7f0a0076
 			public const int media_actions = 2131361910;
