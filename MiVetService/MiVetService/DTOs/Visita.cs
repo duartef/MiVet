@@ -11,5 +11,6 @@ namespace MiVetService
         public DateTime Fecha { get; set; }
         public int IdAnimal { get; set; }
         public int IdVeterinaria { get; set; }
+        public string Actividad { get; set; }
     }
 }
