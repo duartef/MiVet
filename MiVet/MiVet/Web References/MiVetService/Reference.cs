@@ -269,6 +269,8 @@ namespace MiVet.MiVetService {
         
         private int idVeterinariaField;
         
+        private string actividadField;
+        
         /// <remarks/>
         public int Id {
             get {
@@ -306,6 +308,16 @@ namespace MiVet.MiVetService {
             }
             set {
                 this.idVeterinariaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Actividad {
+            get {
+                return this.actividadField;
+            }
+            set {
+                this.actividadField = value;
             }
         }
     }

@@ -5,7 +5,7 @@ using Android.Content;
 
 namespace MiVet
 {
-    [Activity(Label = "Prueba", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Prueba")]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

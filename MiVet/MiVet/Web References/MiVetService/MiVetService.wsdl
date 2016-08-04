@@ -65,6 +65,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="IdAnimal" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Actividad" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="TestResponse">

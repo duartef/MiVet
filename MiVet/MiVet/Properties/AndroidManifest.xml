@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.systemas.miveterinaria" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="16" />
-	<application android:label="MiVet" android:icon="@drawable/Icon">
+	<application android:label="MiVet" android:icon="@drawable/Icon" android:theme="@style/MyCustomTheme">
 		<activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:label="@string/ApplicationName" />
 		<provider android:authorities="com.facebook.app.FacebookContentProvider171167906634823" android:name="com.facebook.FacebookContentProvider" android:exported="true" />
 	</application>
