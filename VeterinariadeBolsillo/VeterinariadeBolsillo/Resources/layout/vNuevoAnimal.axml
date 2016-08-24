@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/Fondo">
+    <TextView
+        android:text="Nueva Mascota!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" />
+    <EditText
+        android:inputType="textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txNombre"
+        android:hint="Nombre"
+        android:layout_margin="5dp" />
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txEspecie"
+        android:hint="Especie"
+        android:layout_margin="5dp" />
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txRaza"
+        android:hint="Raza"
+        android:layout_margin="5dp" />
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="36dp"
+        android:id="@+id/spnSexo"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical"
+        android:textAlignment="gravity" />
+    <EditText
+        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txFechaNacimiento"
+        android:hint="Fecha Nacimiento"
+        android:layout_margin="5dp" />
+    <EditText
+        android:inputType="numberSigned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txDocDueño"
+        android:hint="Documento Dueño"
+        android:layout_margin="5dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_margin="5dp">
+        <Button
+            android:text="Cancelar"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btCancelar"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="36dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#FFFFFF"
+            android:background="#0277BD" />
+        <Button
+            android:text="Guardar"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/btGuardar"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="36dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#FFFFFF"
+            android:background="#0277BD" />
+    </LinearLayout>
+</LinearLayout>

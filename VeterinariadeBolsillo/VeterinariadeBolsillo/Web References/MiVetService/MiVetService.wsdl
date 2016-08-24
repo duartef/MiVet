@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Test">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:Animal" />
+            <s:element minOccurs="0" maxOccurs="1" name="m" type="tns:Mascota" />
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="tns:Persona" />
+            <s:element minOccurs="0" maxOccurs="1" name="v" type="tns:Veterinaria" />
+            <s:element minOccurs="0" maxOccurs="1" name="vis" type="tns:Visita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Animal">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Especie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mascota">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAnimal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdPersona" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Persona">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Veterinaria">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ubicacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Urgencias" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitud" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitud" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Visita">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAnimal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Actividad" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogInResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertVisita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="visita" type="tns:Visita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertVisitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertVisitaResult" type="tns:Visita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertVeterinaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="veterinaria" type="tns:Veterinaria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertVeterinariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertVeterinariaResult" type="tns:Veterinaria" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertPersonaResult" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertMascota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mascota" type="tns:Mascota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertMascotaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertMascotaResult" type="tns:Mascota" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertAnimal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="animal" type="tns:Animal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpsertAnimalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpsertAnimalResult" type="tns:Animal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVisitasDeLaVeterinaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVisita">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Visita" nillable="true" type="tns:Visita" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVisitasDeLaVeterinariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVisitasDeLaVeterinariaResult" type="tns:ArrayOfVisita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnimalesDeLaVeterinaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Animal" nillable="true" type="tns:Animal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAnimalesDeLaVeterinariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnimalesDeLaVeterinariaResult" type="tns:ArrayOfAnimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogInSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIn" />
+  </wsdl:message>
+  <wsdl:message name="LogInSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertVisitaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertVisita" />
+  </wsdl:message>
+  <wsdl:message name="UpsertVisitaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertVisitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertVeterinariaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertVeterinaria" />
+  </wsdl:message>
+  <wsdl:message name="UpsertVeterinariaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertVeterinariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertPersona" />
+  </wsdl:message>
+  <wsdl:message name="UpsertPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertMascotaSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertMascota" />
+  </wsdl:message>
+  <wsdl:message name="UpsertMascotaSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertMascotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpsertAnimalSoapIn">
+    <wsdl:part name="parameters" element="tns:UpsertAnimal" />
+  </wsdl:message>
+  <wsdl:message name="UpsertAnimalSoapOut">
+    <wsdl:part name="parameters" element="tns:UpsertAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitasDeLaVeterinariaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVisitasDeLaVeterinaria" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitasDeLaVeterinariaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVisitasDeLaVeterinariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnimalesDeLaVeterinariaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnimalesDeLaVeterinaria" />
+  </wsdl:message>
+  <wsdl:message name="GetAnimalesDeLaVeterinariaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnimalesDeLaVeterinariaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MiVetServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <wsdl:input message="tns:LogInSoapIn" />
+      <wsdl:output message="tns:LogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVisita">
+      <wsdl:input message="tns:UpsertVisitaSoapIn" />
+      <wsdl:output message="tns:UpsertVisitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVeterinaria">
+      <wsdl:input message="tns:UpsertVeterinariaSoapIn" />
+      <wsdl:output message="tns:UpsertVeterinariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertPersona">
+      <wsdl:input message="tns:UpsertPersonaSoapIn" />
+      <wsdl:output message="tns:UpsertPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertMascota">
+      <wsdl:input message="tns:UpsertMascotaSoapIn" />
+      <wsdl:output message="tns:UpsertMascotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAnimal">
+      <wsdl:input message="tns:UpsertAnimalSoapIn" />
+      <wsdl:output message="tns:UpsertAnimalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitasDeLaVeterinaria">
+      <wsdl:input message="tns:GetVisitasDeLaVeterinariaSoapIn" />
+      <wsdl:output message="tns:GetVisitasDeLaVeterinariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeLaVeterinaria">
+      <wsdl:input message="tns:GetAnimalesDeLaVeterinariaSoapIn" />
+      <wsdl:output message="tns:GetAnimalesDeLaVeterinariaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MiVetServiceSoap" type="tns:MiVetServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVisita">
+      <soap:operation soapAction="http://tempuri.org/UpsertVisita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVeterinaria">
+      <soap:operation soapAction="http://tempuri.org/UpsertVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertPersona">
+      <soap:operation soapAction="http://tempuri.org/UpsertPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertMascota">
+      <soap:operation soapAction="http://tempuri.org/UpsertMascota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAnimal">
+      <soap:operation soapAction="http://tempuri.org/UpsertAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitasDeLaVeterinaria">
+      <soap:operation soapAction="http://tempuri.org/GetVisitasDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeLaVeterinaria">
+      <soap:operation soapAction="http://tempuri.org/GetAnimalesDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MiVetServiceSoap12" type="tns:MiVetServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://tempuri.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVisita">
+      <soap12:operation soapAction="http://tempuri.org/UpsertVisita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertVeterinaria">
+      <soap12:operation soapAction="http://tempuri.org/UpsertVeterinaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertPersona">
+      <soap12:operation soapAction="http://tempuri.org/UpsertPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertMascota">
+      <soap12:operation soapAction="http://tempuri.org/UpsertMascota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpsertAnimal">
+      <soap12:operation soapAction="http://tempuri.org/UpsertAnimal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitasDeLaVeterinaria">
+      <soap12:operation soapAction="http://tempuri.org/GetVisitasDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeLaVeterinaria">
+      <soap12:operation soapAction="http://tempuri.org/GetAnimalesDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MiVetService">
+    <wsdl:port name="MiVetServiceSoap" binding="tns:MiVetServiceSoap">
+      <soap:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MiVetServiceSoap12" binding="tns:MiVetServiceSoap12">
+      <soap12:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
