@@ -203,6 +203,7 @@ namespace VeterinariadeBolsillo
                 a.IdVeterinaria = animal.IdVeterinaria;
                 a.Nombre = animal.Nombre;
                 a.Sexo = animal.Sexo;
+                a.Raza = animal.Raza;
 
                 return a;
             }
@@ -225,6 +226,7 @@ namespace VeterinariadeBolsillo
                 throw ex;
             }
         }
+
         private lMascota lMascotaFromMascota(Mascota mascota)
         {
             try
@@ -255,6 +257,7 @@ namespace VeterinariadeBolsillo
                 throw ex;
             }
         }
+
         private lPersona lPersonaFromPersona(Persona persona)
         {
             try
@@ -286,6 +289,7 @@ namespace VeterinariadeBolsillo
                 throw ex;
             }
         }
+
         private lVeterinaria lVeterinariaFromVeterinaria(Veterinaria veterinaria)
         {
             try
@@ -319,6 +323,7 @@ namespace VeterinariadeBolsillo
                 throw ex;
             }
         }
+
         private lVisita lVisitaFromVisita(Visita visita)
         {
             try
@@ -400,9 +405,10 @@ namespace VeterinariadeBolsillo
         public DateTime FechaNacimiento { get; set; }
         public byte[] Foto { get; set; }
         public int IdVeterinaria { get; set; }
+        public string Raza { get; set; }
     }
 
-	[Table ("lMascota")]
+    [Table ("lMascota")]
 	public class lMascota
     {
 		[PrimaryKey, Column ("Id")]

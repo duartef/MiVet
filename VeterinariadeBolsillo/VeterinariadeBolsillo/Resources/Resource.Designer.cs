@@ -88,16 +88,25 @@ namespace VeterinariadeBolsillo
 			public const int Buscar = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int Fondo = 2130837508;
+			public const int Camera = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int Logo = 2130837509;
+			public const int Clock = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int LogoChico = 2130837510;
+			public const int Fondo = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int ProximasVisitas = 2130837511;
+			public const int Icono = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int Logo = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int LogoChico = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int ProximasVisitas = 2130837514;
 			
 			static Drawable()
 			{
@@ -127,20 +136,41 @@ namespace VeterinariadeBolsillo
 			// aapt resource value: 0x7f07000c
 			public const int btBuscar = 2131165196;
 			
-			// aapt resource value: 0x7f070015
-			public const int btCancelar = 2131165205;
+			// aapt resource value: 0x7f07001f
+			public const int btCamera = 2131165215;
 			
-			// aapt resource value: 0x7f070016
-			public const int btGuardar = 2131165206;
+			// aapt resource value: 0x7f070020
+			public const int btCancelar = 2131165216;
+			
+			// aapt resource value: 0x7f07001c
+			public const int btEditarAnimal = 2131165212;
+			
+			// aapt resource value: 0x7f070021
+			public const int btGuardar = 2131165217;
+			
+			// aapt resource value: 0x7f07001a
+			public const int btIndicaciones = 2131165210;
 			
 			// aapt resource value: 0x7f070004
 			public const int btLogin = 2131165188;
 			
+			// aapt resource value: 0x7f070019
+			public const int btProgramarVisita = 2131165209;
+			
+			// aapt resource value: 0x7f07001b
+			public const int btProximasVisitas = 2131165211;
+			
 			// aapt resource value: 0x7f07000d
 			public const int btVisitas = 2131165197;
 			
+			// aapt resource value: 0x7f070022
+			public const int calendar = 2131165218;
+			
 			// aapt resource value: 0x7f070001
 			public const int imageView1 = 2131165185;
+			
+			// aapt resource value: 0x7f070011
+			public const int imgMascota = 2131165201;
 			
 			// aapt resource value: 0x7f070008
 			public const int imgVeterinaria = 2131165192;
@@ -151,35 +181,56 @@ namespace VeterinariadeBolsillo
 			// aapt resource value: 0x7f07000a
 			public const int linearLayout2 = 2131165194;
 			
+			// aapt resource value: 0x7f070010
+			public const int linearLayout3 = 2131165200;
+			
 			// aapt resource value: 0x7f070012
-			public const int spnSexo = 2131165202;
+			public const int linearLayout4 = 2131165202;
+			
+			// aapt resource value: 0x7f070023
+			public const int lstVisitas = 2131165219;
+			
+			// aapt resource value: 0x7f07001d
+			public const int spnSexo = 2131165213;
 			
 			// aapt resource value: 0x7f070000
 			public const int textView1 = 2131165184;
 			
+			// aapt resource value: 0x7f070024
+			public const int txActividad = 2131165220;
+			
+			// aapt resource value: 0x7f070018
+			public const int txComentariosInternos = 2131165208;
+			
+			// aapt resource value: 0x7f07001e
+			public const int txDocDueño = 2131165214;
+			
 			// aapt resource value: 0x7f070014
-			public const int txDocDueño = 2131165204;
+			public const int txEspecie = 2131165204;
 			
-			// aapt resource value: 0x7f070010
-			public const int txEspecie = 2131165200;
-			
-			// aapt resource value: 0x7f070013
-			public const int txFechaNacimiento = 2131165203;
+			// aapt resource value: 0x7f070016
+			public const int txFechaNacimiento = 2131165206;
 			
 			// aapt resource value: 0x7f07000f
-			public const int txNombre = 2131165199;
+			public const int txMascota = 2131165199;
+			
+			// aapt resource value: 0x7f070013
+			public const int txNombre = 2131165203;
 			
 			// aapt resource value: 0x7f070003
 			public const int txPassword = 2131165187;
 			
-			// aapt resource value: 0x7f070011
-			public const int txRaza = 2131165201;
+			// aapt resource value: 0x7f070015
+			public const int txRaza = 2131165205;
 			
 			// aapt resource value: 0x7f070002
 			public const int txUsuario = 2131165186;
 			
 			// aapt resource value: 0x7f070007
 			public const int txVeterinaria = 2131165191;
+			
+			// aapt resource value: 0x7f070017
+			public const int txVisita = 2131165207;
 			
 			static Id()
 			{
@@ -207,7 +258,16 @@ namespace VeterinariadeBolsillo
 			public const int vHome = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int vNuevoAnimal = 2130903044;
+			public const int vMascota = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int vNuevoAnimal = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int vProximasVisitas = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int vVisitaView = 2130903047;
 			
 			static Layout()
 			{

@@ -28,7 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>Full</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="ImagePicker.cs" />
     <Compile Include="LayoutHelper.cs" />
     <Compile Include="LoginUsuarioActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -73,8 +75,11 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceHelper.cs" />
-    <Compile Include="vHomeActivity.cs" />
-    <Compile Include="vNuevoAnimalActivity.cs" />
+    <Compile Include="Veterinario\vHomeActivity.cs" />
+    <Compile Include="Veterinario\vMascotaActivity.cs" />
+    <Compile Include="Veterinario\vNuevoAnimalActivity.cs" />
+    <Compile Include="Veterinario\vProximasVisitasActivity.cs" />
+    <Compile Include="Veterinario\vVisitaAdapter.cs" />
     <Compile Include="Web References\MiVetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +101,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\vNuevoAnimal.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vProximasVisitas.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vVisitaView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vMascota.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="Web References\MiVetService\Animal.datasource">
@@ -195,6 +209,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\LogoChico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icono.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Camera.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

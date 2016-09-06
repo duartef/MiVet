@@ -33,6 +33,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
           <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
           <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Raza" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Mascota">
@@ -46,6 +47,7 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
         </s:sequence>
@@ -54,6 +56,7 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Ubicacion" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="Urgencias" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="Latitud" type="s:decimal" />
@@ -67,6 +70,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="IdAnimal" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Actividad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComentariosInternos" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="TestResponse">
@@ -76,7 +80,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>

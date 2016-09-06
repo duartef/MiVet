@@ -62,53 +62,57 @@ namespace VeterinariadeBolsillo
             //    Toast.MakeText(this, "No te olvides de poner el Usuario y la Contraseña!", ToastLength.Short);
             //    return;
             //}
+            try
+            {
+                btLogin.Enabled = false;
+                Toast.MakeText(this, "Iniciando sesión...", ToastLength.Short).Show();
 
-            MiVetService.MiVetService ws = new MiVetService.MiVetService();
+                MiVetService.MiVetService ws = new MiVetService.MiVetService();
 
-            //object resultado = ws.LogIn(txUsuario.Text, txPassword.Text);
-            //if (resultado.GetType() == typeof(Veterinaria))
-            //{
-            //    Intent intent = new Intent(this, typeof(vHomeActivity));
-            //    intent.PutExtra("vetId", ((Veterinaria)resultado).Id);
-            //    intent.PutExtra("vetNombre", ((Veterinaria)resultado).Nombre);
-            //    StartActivity(intent);
-            //}
-            //else if (resultado.GetType() == typeof(Persona))
-            //{
-            //    Intent intent = new Intent(this, typeof(pHomeActivity));
-            //    intent.PutExtra("personaId", ((Persona)resultado).Id);
-            //    intent.PutExtra("personaNombre", ((Persona)resultado).Nombre);
-            //    StartActivity(intent);
-            //}
+                ws.LogInCompleted += Ws_LogInCompleted;
+                ws.LogInAsync(txUsuario.Text, txPassword.Text);
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                btLogin.Enabled = true;
+            }
 
-            ws.LogInCompleted += Ws_LogInCompleted;
-            ws.LogInAsync(txUsuario.Text, txPassword.Text);
         }
 
         private void Ws_LogInCompleted(object sender, MiVetService.LogInCompletedEventArgs e)
         {
-            Intent intent = new Intent(this, typeof(vHomeActivity));
-            intent.PutExtra("vetId", 1);
-            intent.PutExtra("vetNombre", "Prueba");
-            StartActivity(intent);
+            //Intent intent = new Intent(this, typeof(vHomeActivity));
+            //intent.PutExtra("vetId", 1);
+            //intent.PutExtra("vetNombre", "Prueba");
+            //StartActivity(intent);
+            try
+            {
+                btLogin.Enabled = true;
 
-            /*
-            object resultado = e.Result;
-            if (resultado.GetType() == typeof(Veterinaria))
-            {
-                Intent intent = new Intent(this, typeof(vHomeActivity));
-                intent.PutExtra("vetId", ((Veterinaria)resultado).Id);
-                intent.PutExtra("vetNombre", ((Veterinaria)resultado).Nombre);
-                StartActivity(intent);
+                object resultado = e.Result;
+                if (resultado.GetType() == typeof(Veterinaria))
+                {
+                    Intent intent = new Intent(this, typeof(vHomeActivity));
+                    intent.PutExtra("vetId", ((Veterinaria)resultado).Id);
+                    intent.PutExtra("vetNombre", ((Veterinaria)resultado).Nombre);
+                    StartActivity(intent);
+                }
+                else if (resultado.GetType() == typeof(Persona))
+                {
+                    Intent intent = new Intent(this, typeof(pHomeActivity));
+                    intent.PutExtra("personaId", ((Persona)resultado).Id);
+                    intent.PutExtra("personaNombre", ((Persona)resultado).Nombre);
+                    StartActivity(intent);
+                }
             }
-            else if (resultado.GetType() == typeof(Persona))
+            catch (Exception ex)
             {
-                Intent intent = new Intent(this, typeof(pHomeActivity));
-                intent.PutExtra("personaId", ((Persona)resultado).Id);
-                intent.PutExtra("personaNombre", ((Persona)resultado).Nombre);
-                StartActivity(intent);
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+                btLogin.Enabled = true;
             }
-            */
+            
+
         }
     }
 }

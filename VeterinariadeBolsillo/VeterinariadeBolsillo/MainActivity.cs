@@ -9,7 +9,7 @@ using Android.Graphics.Drawables;
 
 namespace VeterinariadeBolsillo
 {
-    [Activity(Label = "VeterinariadeBolsillo", MainLauncher = true, Icon = "@drawable/Logo")]
+    [Activity(Label = "VeterinariadeBolsillo", MainLauncher = true, Icon = "@drawable/Icono")]
     public class MainActivity : Activity
     {
         int count = 1;

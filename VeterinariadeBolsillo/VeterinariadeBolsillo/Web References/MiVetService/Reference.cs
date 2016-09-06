@@ -182,26 +182,26 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LogIn", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object LogIn(string usuario, string contraseña) {
+        public object LogIn(string usuario, string password) {
             object[] results = this.Invoke("LogIn", new object[] {
                         usuario,
-                        contraseña});
+                        password});
             return ((object)(results[0]));
         }
         
         /// <remarks/>
-        public void LogInAsync(string usuario, string contraseña) {
-            this.LogInAsync(usuario, contraseña, null);
+        public void LogInAsync(string usuario, string password) {
+            this.LogInAsync(usuario, password, null);
         }
         
         /// <remarks/>
-        public void LogInAsync(string usuario, string contraseña, object userState) {
+        public void LogInAsync(string usuario, string password, object userState) {
             if ((this.LogInOperationCompleted == null)) {
                 this.LogInOperationCompleted = new System.Threading.SendOrPostCallback(this.OnLogInOperationCompleted);
             }
             this.InvokeAsync("LogIn", new object[] {
                         usuario,
-                        contraseña}, this.LogInOperationCompleted, userState);
+                        password}, this.LogInOperationCompleted, userState);
         }
         
         private void OnLogInOperationCompleted(object arg) {
@@ -457,6 +457,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         private int idVeterinariaField;
         
+        private string razaField;
+        
         /// <remarks/>
         public int Id {
             get {
@@ -537,6 +539,16 @@ namespace VeterinariadeBolsillo.MiVetService {
                 this.idVeterinariaField = value;
             }
         }
+        
+        /// <remarks/>
+        public string Raza {
+            get {
+                return this.razaField;
+            }
+            set {
+                this.razaField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -556,6 +568,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         private int idVeterinariaField;
         
         private string actividadField;
+        
+        private string comentariosInternosField;
         
         /// <remarks/>
         public int Id {
@@ -606,6 +620,16 @@ namespace VeterinariadeBolsillo.MiVetService {
                 this.actividadField = value;
             }
         }
+        
+        /// <remarks/>
+        public string ComentariosInternos {
+            get {
+                return this.comentariosInternosField;
+            }
+            set {
+                this.comentariosInternosField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -619,6 +643,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         private int idField;
         
         private string nombreField;
+        
+        private string passwordField;
         
         private string ubicacionField;
         
@@ -645,6 +671,16 @@ namespace VeterinariadeBolsillo.MiVetService {
             }
             set {
                 this.nombreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
             }
         }
         
@@ -701,6 +737,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         private string nombreField;
         
+        private string passwordField;
+        
         private string documentoField;
         
         private string telefonoField;
@@ -722,6 +760,16 @@ namespace VeterinariadeBolsillo.MiVetService {
             }
             set {
                 this.nombreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Password {
+            get {
+                return this.passwordField;
+            }
+            set {
+                this.passwordField = value;
             }
         }
         

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/Fondo">
+    <TextView
+        android:text="Estas son las mascotas que tenés agendado!!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp" />
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/calendar"
+        android:layout_margin="5dp" />
+<!--<View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/my_blue"
+        android:layout_margin="5dp" />-->
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lstVisitas"
+        android:layout_margin="5dp"
+        android:dividerHeight="2dp"
+        android:divider="@color/my_blue"
+        android:headerDividersEnabled="true" />
+</LinearLayout>
