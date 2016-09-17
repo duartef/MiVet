@@ -12,5 +12,6 @@ namespace MiVetService
         public int IdAnimal { get; set; }
         public int IdVeterinaria { get; set; }
         public string Actividad { get; set; }
+        public string ComentariosInternos { get; set; }
     }
 }

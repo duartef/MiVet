@@ -10,9 +10,7 @@ namespace MiVetService
 {
     public class DAOBase
     {
-        //internal const string connStr = @"Server = FABRICIO-PC; Database=Pacemaker;User Id=sa;Password=q1w2e3r4;";
-        internal const string connStr = @"Data Source=SQL5005.myWindowsHosting.com;Initial Catalog=DB_9BA2A5_Inmobiliaria;User Id=DB_9BA2A5_Inmobiliaria_admin;Password=q1w2e3r4;";
-
+        internal const string connStr = @"Data Source=sql5024.mywindowshosting.com;Initial Catalog=DB_9BA2A5_MiVet;User Id=DB_9BA2A5_MiVet_admin;Password=q1w2e3r4;";
 
         public static bool DeleteEntity(object dto)
         {
@@ -488,7 +486,7 @@ namespace MiVetService
             }
         }
 
-        protected static bool UpdateEntity(object dto)
+        public static bool UpdateEntity(object dto)
         {
             List<SqlParameter> lParameters = new List<SqlParameter>();
             string query = string.Empty;

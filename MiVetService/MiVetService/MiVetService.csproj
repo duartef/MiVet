@@ -60,19 +60,25 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOs\AnimalDAO.cs" />
     <Compile Include="DAOs\DAOBase.cs" />
     <Compile Include="DTOs\Animal.cs" />
     <Compile Include="DTOs\Mascota.cs" />
+    <Compile Include="DAOs\MascotaDAO.cs" />
     <Compile Include="MiVetService.asmx.cs">
       <DependentUpon>MiVetService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DTOs\Persona.cs" />
+    <Compile Include="DAOs\PersonaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DTOs\Veterinaria.cs" />
     <Compile Include="DTOs\Visita.cs" />
+    <Compile Include="DAOs\VeterinariaDAO.cs" />
+    <Compile Include="DAOs\VisitaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\MiVetService.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

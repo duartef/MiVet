@@ -9,6 +9,7 @@ namespace MiVetService
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public string Password { get; set; }
         public string Ubicacion { get; set; }
         public bool Urgencias { get; set; }
         public decimal Latitud { get; set; }

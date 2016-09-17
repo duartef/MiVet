@@ -14,6 +14,7 @@ namespace MiVetService
         public string Sexo{ get; set; }
         public DateTime FechaNacimiento { get; set; }
         public byte[] Foto { get; set; }
-        
+        public int IdVeterinaria { get; set; }
+        public string Raza { get; set; }
     }
 }
