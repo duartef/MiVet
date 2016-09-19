@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -241,8 +244,117 @@ namespace MiVetService
             {
                 return AnimalDAO.GetAnimalesDeLaVeterinaria(vetId).ToArray();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public VisitAnimal[] GetVisitasDelDiaPorVeterinaria(int vetId, DateTime fecha)
+        {
+            try
+            {
+                List<VisitAnimal> visitAnimals = new List<VisitAnimal>();
+
+                string query = "SELECT * FROM Visita JOIN Animal ON Visita.IdAnimal = Animal.Id WHERE Visita.Fecha = '" + fecha.ToString("yyyy/MM/dd") + "'";
+                DataTable dt = DAOBase.ExcecuteQuery(query);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    VisitAnimal visitAnimal = new VisitAnimal();
+                    Animal animal = new Animal();
+                    Visita visita = new Visita();
+
+                    animal.Id = (int)dr["IdAnimal"];
+                    animal.Documento = (string)dr["Documento"];
+                    animal.Especie = (string)dr["Especie"];
+                    animal.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
+                    animal.Foto = (byte[])dr["Foto"];
+                    animal.IdVeterinaria = (int)dr["IdVeterinaria"];
+                    animal.Nombre = (string)dr["Nombre"];
+                    animal.Raza = (string)dr["Raza"];
+                    animal.Sexo = (string)dr["Sexo"];
+
+                    visita.Actividad = (string)dr["Actividad"];
+                    visita.ComentariosInternos = (string)dr["ComentariosInternos"];
+                    visita.Fecha = (DateTime)dr["Fecha"];
+                    visita.Id = (int)dr["Id"];
+                    visita.IdAnimal = (int)dr["IdAnimal"];
+                    visita.IdVeterinaria = (int)dr["IdVeterinaria"];
+
+                    visitAnimal.Animal = animal;
+                    visitAnimal.Visita = visita;
+                    visitAnimals.Add(visitAnimal);
+                }
+
+                return visitAnimals.ToArray();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public void TestGetVisitasDelDia()
+        {
+            try
+            {
+                DateTime dt = new DateTime(2016, 9, 18);
+                int vetId = 1;
+                GetVisitasDelDiaPorVeterinaria(vetId, dt);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+        }
+
+        [WebMethod]
+        public Animal[] GetAnimalesPorDueño(int vetId, string dni)
+        {
+            try
+            {
+                return AnimalDAO.GetAnimalesPorDueño(vetId, dni).ToArray();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public void TestInsertVisita()
+        {
+            try
+            {
+                Visita visita = new Visita();
+                visita.Actividad = "Baño";
+                visita.ComentariosInternos = "Es dificil de bañarla";
+                visita.Fecha = new DateTime(2016, 9, 18);
+                visita.IdAnimal = 1;
+                visita.IdVeterinaria = 1;
+
+                UpsertVisita(visita);
+
+                visita.Fecha = visita.Fecha.AddDays(2);
+                visita.Id = 0;
+                UpsertVisita(visita);
+
+                visita.Fecha = visita.Fecha.AddDays(5);
+                visita.Id = 0;
+                UpsertVisita(visita);
+
+                visita.Fecha = visita.Fecha.AddDays(10);
+                visita.Id = 0;
+                UpsertVisita(visita);
+            }
+            catch (Exception ex)
+            {
+
                 throw;
             }
         }

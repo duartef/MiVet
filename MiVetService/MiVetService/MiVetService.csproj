@@ -76,6 +76,7 @@
     <Compile Include="DTOs\Visita.cs" />
     <Compile Include="DAOs\VeterinariaDAO.cs" />
     <Compile Include="DAOs\VisitaDAO.cs" />
+    <Compile Include="VisitAnimal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\MiVetService.pubxml" />
