@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Graphics.Drawables;
+using VeterinariadeBolsillo.MiVetService;
+using Newtonsoft.Json;
 
 namespace VeterinariadeBolsillo
 {
@@ -27,7 +29,12 @@ namespace VeterinariadeBolsillo
 
             button.Click += delegate 
             {
+                Veterinaria vet = new Veterinaria();
+                vet.Nombre = "vetadmin";
+                vet.Password = "Password1";
+
                 Intent intent = new Intent(this, typeof(LoginUsuarioActivity));
+                intent.PutExtra("vet", JsonConvert.SerializeObject(vet));
                 StartActivity(intent);
 
                 //LinearLayout baseLinear = FindViewById<LinearLayout>(Resource.Id.baseLinear);

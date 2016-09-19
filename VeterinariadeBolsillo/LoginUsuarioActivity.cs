@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using VeterinariadeBolsillo.MiVetService;
+using Newtonsoft.Json;
 
 namespace VeterinariadeBolsillo
 {
@@ -53,6 +54,10 @@ namespace VeterinariadeBolsillo
             btLogin = FindViewById<Button>(Resource.Id.btLogin);
             btLogin.Click += BtLogin_Click;
             setStatusBarTranslucent(true);
+
+            Veterinaria vet = JsonConvert.DeserializeObject<Veterinaria>(Intent.GetStringExtra("vet"));
+            txPassword.SetText(vet.Password, TextView.BufferType.Normal);
+            txUsuario.SetText(vet.Nombre, TextView.BufferType.Normal);
         }
 
         private void BtLogin_Click(object sender, EventArgs e)

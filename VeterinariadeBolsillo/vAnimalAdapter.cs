@@ -9,15 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using VeterinariadeBolsillo.MiVetService;
 
 namespace VeterinariadeBolsillo
 {
     class vAnimalAdapter : BaseAdapter
     {
         Activity context;
-        List<lAnimal> animales = new List<lAnimal>();
+        List<Animal> animales = new List<Animal>();
 
-        public vAnimalAdapter(Activity context, List<lAnimal> animales)
+        public vAnimalAdapter(Activity context, List<Animal> animales)
         {
             this.context = context;
             this.animales = animales;
@@ -65,7 +66,7 @@ namespace VeterinariadeBolsillo
             return view;
         }
 
-        public lAnimal GetItemAtPosition(int position)
+        public Animal GetItemAtPosition(int position)
         {
             return animales[position];
         }

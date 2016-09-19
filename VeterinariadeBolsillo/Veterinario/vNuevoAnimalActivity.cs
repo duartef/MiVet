@@ -15,6 +15,7 @@ using Android.Content.PM;
 using Java.IO;
 using Android.Graphics;
 using Android.Database;
+using System.Globalization;
 //using System.IO;
 
 namespace VeterinariadeBolsillo
@@ -36,6 +37,7 @@ namespace VeterinariadeBolsillo
         Animal animal = new Animal();
 
         static string path;
+        ProgressDialog mProgress;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -68,8 +70,10 @@ namespace VeterinariadeBolsillo
                 btCamera = FindViewById<Button>(Resource.Id.btCamera);
                 btCamera.Click += BtCamera_Click;
             }
-
-
+            else
+            {
+                btCamera.Enabled = false;
+            }
 
             FillAutoCompleteText();
 
@@ -93,18 +97,7 @@ namespace VeterinariadeBolsillo
                 PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
             return availableActivities != null && availableActivities.Count > 0;
         }
-
-        //private void CreateDirectoryForPictures()
-        //{
-        //    App._dir = new File(
-        //        Environment.GetExternalStoragePublicDirectory(
-        //            Environment.DirectoryPictures), "CameraAppDemo");
-        //    if (!App._dir.Exists())
-        //    {
-        //        App._dir.Mkdirs();
-        //    }
-        //}
-
+        
         private void BtCamera_Click(object sender, EventArgs e)
         {
 
@@ -135,15 +128,7 @@ namespace VeterinariadeBolsillo
 
             StartActivityForResult(chooserIntent, 0);
         }
-
-        //private static File getTempFile(Context context)
-        //{
-        //    File imageFile = new File(context.ExternalCacheDir, "tempImage_" + DateTime.Now.Millisecond.ToString());
-        //    imageFile.ParentFile.Mkdirs();
-        //    path = imageFile.Path;
-        //    return imageFile;
-        //}
-
+        
         private static List<Intent> addIntentsToList(Context context, List<Intent> list, Intent intent)
         {
             IList<ResolveInfo> resInfo = context.PackageManager.QueryIntentActivities(intent, 0);
@@ -257,32 +242,19 @@ namespace VeterinariadeBolsillo
                             }
 
                             // Dispose of the Java side bitmap.
+                            App.bitmap.Dispose();
+                            App._dir.Dispose();
+                            App._file.Dispose();
+
                             GC.Collect();
-                            
 
-                            //byte[] aux = System.IO.File.ReadAllBytes(data..ToUri(IntentUriType.None));
-                            //Bitmap image = BitmapFactory.DecodeByteArray(aux, 0, aux.Length);
-
-                            //using (Stream outStream = System.IO.File.Create(getTempFile(this).Path))
-                            //{
-                            //    if (targetFile.ToLower().EndsWith("png"))
-                            //        bitmapScaled.Compress(Bitmap.CompressFormat.Png, 100, outStream);
-                            //    else
-                            //        bitmapScaled.Compress(Bitmap.CompressFormat.Jpeg, 95, outStream);
-                            //}
-
-
-                            //image.Compress(Bitmap.CompressFormat.Jpeg, 50 )
-                            //animal.Foto = System.IO.File.ReadAllBytes(getTempFile(this).Path);
+                            Toast.MakeText(this, "Se adjunto bien la imagen!", ToastLength.Short);
                         }
                         catch (Exception)
                         {
 
                             throw;
                         }
-                        //Android.Net.Uri selectedImage = data.Data;
-                        //System.IO.File.ReadAllBytes(selectedImage);
-                        
                     }
                     break;
                 case 1:
@@ -530,7 +502,7 @@ namespace VeterinariadeBolsillo
                 return;
             }
             DateTime fNac;
-            if (!DateTime.TryParse(txFechaNacimiento.Text, out fNac))
+            if (!DateTime.TryParseExact(txFechaNacimiento.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fNac))
             {
                 Toast.MakeText(this, "No te olvides de la fecha de nacimiento!", ToastLength.Short).Show();
                 return;
@@ -543,7 +515,16 @@ namespace VeterinariadeBolsillo
 
             try
             {
-                Toast.MakeText(this, "Dame unos segundos para guardarlo...", ToastLength.Short).Show();
+                mProgress = new ProgressDialog(this);
+                mProgress.SetCancelable(false);
+                mProgress.SetTitle("Guardando Mascota!");
+                mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                mProgress.Indeterminate = true;
+                mProgress.Show();
+
+                RunOnUiThread(() => mProgress.SetMessage("Se está guardando la mascota, por favor esperá unos segundos.."));
+
+                //Toast.MakeText(this, "Dame unos segundos para guardarlo...", ToastLength.Short).Show();
 
                 animal.Documento = txDocDueño.Text.Trim();
                 animal.Especie = txEspecie.Text.Trim();
@@ -571,14 +552,15 @@ namespace VeterinariadeBolsillo
             try
             {
                 btGuardar.Enabled = true;
+                mProgress.Dismiss();
 
                 Animal animalGuardado = (Animal)e.Result;
                 if (animalGuardado != null)
                 {
                     try
                     {
-                        DataManager dm = new DataManager();
-                        dm.InsertlAnimal(animalGuardado);
+                        //DataManager dm = new DataManager();
+                        //dm.InsertlAnimal(animalGuardado);
                     }
                     catch (Exception)
                     {

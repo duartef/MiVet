@@ -16,10 +16,10 @@ namespace VeterinariadeBolsillo
     class vVisitaAdapter : BaseAdapter
     {
         Activity context;
-        List<lVisita> visitas = new List<lVisita>();
-        List<lAnimal> animales = new List<lAnimal>();
+        List<Visita> visitas = new List<Visita>();
+        List<Animal> animales = new List<Animal>();
 
-        public vVisitaAdapter(Activity context, List<lVisita> visitas, List<lAnimal> animales)
+        public vVisitaAdapter(Activity context, List<Visita> visitas, List<Animal> animales)
         {
             this.context = context;
             this.visitas = visitas;
@@ -61,7 +61,7 @@ namespace VeterinariadeBolsillo
             //Find references to each subview in the list item's view
             var txNombre = view.FindViewById<TextView>(Resource.Id.txNombre);
             var txActividad = view.FindViewById<TextView>(Resource.Id.txActividad);
-            lAnimal animal = animales.Find(x => x.Id == visita.IdAnimal);
+            Animal animal = animales.Find(x => x.Id == visita.IdAnimal);
             txNombre.SetText(animal.Nombre, TextView.BufferType.Normal);
             txActividad.SetText(visita.Actividad, TextView.BufferType.Normal);
 
@@ -69,7 +69,7 @@ namespace VeterinariadeBolsillo
             return view;
         }
 
-        public lVisita GetItemAtPosition(int position)
+        public Visita GetItemAtPosition(int position)
         {
             return visitas[position];
         }

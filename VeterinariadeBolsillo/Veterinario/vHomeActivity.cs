@@ -44,18 +44,18 @@ namespace VeterinariadeBolsillo
             ImageView btAjustes = FindViewById<ImageView>(Resource.Id.btAjustes);
             btAjustes.Click += BtAjustes_Click;
 
-            MiVetService.MiVetService ws = new MiVetService.MiVetService();
-            ws.GetAnimalesDeLaVeterinariaCompleted += Ws_GetAnimalesDeLaVeterinariaCompleted;
-            ws.GetAnimalesDeLaVeterinariaAsync(vetId);
+            //MiVetService.MiVetService ws = new MiVetService.MiVetService();
+            //ws.GetAnimalesDeLaVeterinariaCompleted += Ws_GetAnimalesDeLaVeterinariaCompleted;
+            //ws.GetAnimalesDeLaVeterinariaAsync(vetId);
 
-            mProgress = new ProgressDialog(this);
-            mProgress.SetCancelable(false);
-            mProgress.SetTitle("Sincronizando Datos");
-            mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
-            mProgress.Indeterminate = true;
-            mProgress.Show();
+            //mProgress = new ProgressDialog(this);
+            //mProgress.SetCancelable(false);
+            //mProgress.SetTitle("Sincronizando Datos");
+            //mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+            //mProgress.Indeterminate = true;
+            //mProgress.Show();
 
-            RunOnUiThread(() => mProgress.SetMessage("Probando el Web Service"));
+            //RunOnUiThread(() => mProgress.SetMessage("Probando el Web Service"));
 
             //new Thread(new ThreadStart(delegate
             //{

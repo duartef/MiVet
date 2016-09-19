@@ -9,6 +9,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using VeterinariadeBolsillo.MiVetService;
+using Newtonsoft.Json;
 
 namespace VeterinariadeBolsillo
 {
@@ -17,11 +19,15 @@ namespace VeterinariadeBolsillo
     {
         EditText txDni;
         ListView lstAnimales;
-        List<lAnimal> animales = new List<lAnimal>();
+        List<Animal> animales = new List<Animal>();
+        int vetId;
+        ProgressDialog mProgress;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.vBuscarAnimal);
+
+            vetId = Intent.GetIntExtra("vetId", 0);
 
             txDni = FindViewById<EditText>(Resource.Id.txDni);
             Button btBuscar = FindViewById<Button>(Resource.Id.btBuscar);
@@ -34,10 +40,11 @@ namespace VeterinariadeBolsillo
         {
             try
             {
-                lAnimal animalSeleccionado = animales[e.Position];
+                Animal animalSeleccionado = animales[e.Position];
 
                 Intent intent = new Intent(this, typeof(vMascotaActivity));
-                intent.PutExtra("animalId", animalSeleccionado.Id);
+                //intent.PutExtra("animalId", animalSeleccionado.Id);
+                intent.PutExtra("animal", JsonConvert.SerializeObject(animalSeleccionado));
                 StartActivity(intent);
             }
             catch (Exception ex)
@@ -55,8 +62,23 @@ namespace VeterinariadeBolsillo
 
                 string dni = txDni.Text.Trim();
 
-                DataManager dm = new DataManager();
-                animales = dm.GetTable<lAnimal>().Where(x => x.Documento == dni).ToList();
+                //MiVetService.MiVetService ws = new MiVetService.MiVetService();
+                //ws.GetAnimalesDeLaVeterinariaCompleted += Ws_GetAnimalesDeLaVeterinariaCompleted;
+                //ws.GetAnimalesDeLaVeterinariaAsync(vetId);
+
+                mProgress = new ProgressDialog(this);
+                mProgress.SetCancelable(false);
+                mProgress.SetTitle("Buscando entre las mascotas..");
+                mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                mProgress.Indeterminate = true;
+                mProgress.Show();
+
+
+                MiVetService.MiVetService ws = new MiVetService.MiVetService();
+                ws.GetAnimalesPorDueñoCompleted += Ws_GetAnimalesPorDueñoCompleted;
+                ws.GetAnimalesPorDueñoAsync(vetId, dni);
+                //DataManager dm = new DataManager();
+                //animales = dm.GetTable<lAnimal>().Where(x => x.Documento == dni).ToList();
 
                 //Toast.MakeText(this, "Llenar el listView", ToastLength.Short).Show();
                 lstAnimales.Adapter = null;
@@ -65,6 +87,22 @@ namespace VeterinariadeBolsillo
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            }
+        }
+
+        private void Ws_GetAnimalesPorDueñoCompleted(object sender, GetAnimalesPorDueñoCompletedEventArgs e)
+        {
+            try
+            {
+                mProgress.Dismiss();
+                animales = (List<Animal>)e.Result.ToList();
+                lstAnimales.Adapter = null;
+                lstAnimales.Adapter = new vAnimalAdapter(this, animales);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

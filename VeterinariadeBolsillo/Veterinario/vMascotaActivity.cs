@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
+using VeterinariadeBolsillo.MiVetService;
+using Newtonsoft.Json;
 
 namespace VeterinariadeBolsillo
 {
@@ -17,8 +19,9 @@ namespace VeterinariadeBolsillo
     public class vMascotaActivity : Activity
     {
         //lMascota lMascota;
-        lAnimal lAnimal;
-        lVisita lVisita;
+        Animal Animal;
+        Visita Visita;
+
         DataManager dm = new DataManager();
 
         ImageView imgMascota;
@@ -48,13 +51,15 @@ namespace VeterinariadeBolsillo
 
             int lAnimalId = Intent.GetIntExtra("animalId", 0);
             int lVisitaId = Intent.GetIntExtra("visitaId", 0);
+            Visita = JsonConvert.DeserializeObject<Visita>(Intent.GetStringExtra("visita"));
+            Animal = JsonConvert.DeserializeObject<Animal>(Intent.GetStringExtra("animal"));
 
-            if (lAnimalId != 0)
+            if (Animal != null)
             {
-                lAnimal = dm.Get<lAnimal>(x => x.Id == lAnimalId);
+                //lAnimal = dm.Get<lAnimal>(x => x.Id == lAnimalId);
                 //lMascota = dm.Get<lMascota>(x => x.IdAnimal == lAnimalId);
 
-                if (lVisitaId == 0)
+                if (Visita == null)
                 {
                     txVisita.Visibility = ViewStates.Invisible;
                     txComentariosInternos.Visibility = ViewStates.Invisible;
@@ -63,9 +68,9 @@ namespace VeterinariadeBolsillo
                 {
                     txVisita.Visibility = ViewStates.Visible;
                     txComentariosInternos.Visibility = ViewStates.Visible;
-                    lVisita = dm.Get<lVisita>(x => x.Id == lVisitaId);
-                    txVisita.SetText(lVisita.Actividad, TextView.BufferType.Normal);
-                    txComentariosInternos.SetText(lVisita.ComentariosInternos, TextView.BufferType.Normal);
+                    //lVisita = dm.Get<lVisita>(x => x.Id == lVisitaId);
+                    txVisita.SetText(Visita.Actividad, TextView.BufferType.Normal);
+                    txComentariosInternos.SetText(Visita.ComentariosInternos, TextView.BufferType.Normal);
                 }
 
             }
@@ -90,16 +95,16 @@ namespace VeterinariadeBolsillo
                 //ToDo: Setear la imagen que existe del animal, agregar una Raza en animal, agregar ComentariosInternos en Visita
 
                 //set Image
-                if (lAnimal.Foto != null)
+                if (Animal.Foto != null)
                 {
-                    imgMascota.SetImageBitmap(BitmapFactory.DecodeByteArray(lAnimal.Foto, 0, lAnimal.Foto.Length));
+                    imgMascota.SetImageBitmap(BitmapFactory.DecodeByteArray(Animal.Foto, 0, Animal.Foto.Length));
                 }
 
-                txMascota.SetText(txMascota.Text.Replace("@mascota", lAnimal.Nombre), TextView.BufferType.Normal);
-                txNombre.SetText(lAnimal.Nombre, TextView.BufferType.Normal);
-                txEspecie.SetText(lAnimal.Especie, TextView.BufferType.Normal);
-                txRaza.SetText(lAnimal.Raza, TextView.BufferType.Normal);
-                txFechaNacimiento.SetText(lAnimal.FechaNacimiento.ToString("dd/MM/yyyy"), TextView.BufferType.Normal);
+                txMascota.SetText(txMascota.Text.Replace("@mascota", Animal.Nombre), TextView.BufferType.Normal);
+                txNombre.SetText(Animal.Nombre, TextView.BufferType.Normal);
+                txEspecie.SetText(Animal.Especie, TextView.BufferType.Normal);
+                txRaza.SetText(Animal.Raza, TextView.BufferType.Normal);
+                txFechaNacimiento.SetText(Animal.FechaNacimiento.ToString("dd/MM/yyyy"), TextView.BufferType.Normal);
             }
             catch (Exception ex)
             {
@@ -111,7 +116,7 @@ namespace VeterinariadeBolsillo
         private void BtEditarAnimal_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(vNuevoAnimalActivity));
-            intent.PutExtra("lAnimalId", lAnimal.Id);
+            //intent.PutExtra("lAnimalId", lAnimal.Id);
             StartActivity(intent);
             this.Finish();
         }

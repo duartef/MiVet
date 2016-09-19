@@ -199,6 +199,59 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetVisitasDelDiaPorVeterinaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VisitAnimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Visita" type="tns:Visita" />
+          <s:element minOccurs="0" maxOccurs="1" name="Animal" type="tns:Animal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVisitAnimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VisitAnimal" nillable="true" type="tns:VisitAnimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVisitasDelDiaPorVeterinariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVisitasDelDiaPorVeterinariaResult" type="tns:ArrayOfVisitAnimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestGetVisitasDelDia">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestGetVisitasDelDiaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAnimalesPorDueño">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnimalesPorDueñoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnimalesPorDueñoResult" type="tns:ArrayOfAnimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestInsertVisita">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestInsertVisitaResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -261,6 +314,30 @@
   <wsdl:message name="GetAnimalesDeLaVeterinariaSoapOut">
     <wsdl:part name="parameters" element="tns:GetAnimalesDeLaVeterinariaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetVisitasDelDiaPorVeterinariaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVisitasDelDiaPorVeterinaria" />
+  </wsdl:message>
+  <wsdl:message name="GetVisitasDelDiaPorVeterinariaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVisitasDelDiaPorVeterinariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestGetVisitasDelDiaSoapIn">
+    <wsdl:part name="parameters" element="tns:TestGetVisitasDelDia" />
+  </wsdl:message>
+  <wsdl:message name="TestGetVisitasDelDiaSoapOut">
+    <wsdl:part name="parameters" element="tns:TestGetVisitasDelDiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnimalesPorDueñoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnimalesPorDueño" />
+  </wsdl:message>
+  <wsdl:message name="GetAnimalesPorDueñoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnimalesPorDueñoResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestInsertVisitaSoapIn">
+    <wsdl:part name="parameters" element="tns:TestInsertVisita" />
+  </wsdl:message>
+  <wsdl:message name="TestInsertVisitaSoapOut">
+    <wsdl:part name="parameters" element="tns:TestInsertVisitaResponse" />
+  </wsdl:message>
   <wsdl:portType name="MiVetServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -301,6 +378,22 @@
     <wsdl:operation name="GetAnimalesDeLaVeterinaria">
       <wsdl:input message="tns:GetAnimalesDeLaVeterinariaSoapIn" />
       <wsdl:output message="tns:GetAnimalesDeLaVeterinariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitasDelDiaPorVeterinaria">
+      <wsdl:input message="tns:GetVisitasDelDiaPorVeterinariaSoapIn" />
+      <wsdl:output message="tns:GetVisitasDelDiaPorVeterinariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestGetVisitasDelDia">
+      <wsdl:input message="tns:TestGetVisitasDelDiaSoapIn" />
+      <wsdl:output message="tns:TestGetVisitasDelDiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesPorDueño">
+      <wsdl:input message="tns:GetAnimalesPorDueñoSoapIn" />
+      <wsdl:output message="tns:GetAnimalesPorDueñoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestInsertVisita">
+      <wsdl:input message="tns:TestInsertVisitaSoapIn" />
+      <wsdl:output message="tns:TestInsertVisitaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MiVetServiceSoap" type="tns:MiVetServiceSoap">
@@ -388,6 +481,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetAnimalesDeLaVeterinaria">
       <soap:operation soapAction="http://tempuri.org/GetAnimalesDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVisitasDelDiaPorVeterinaria">
+      <soap:operation soapAction="http://tempuri.org/GetVisitasDelDiaPorVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetVisitasDelDia">
+      <soap:operation soapAction="http://tempuri.org/TestGetVisitasDelDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesPorDueño">
+      <soap:operation soapAction="http://tempuri.org/GetAnimalesPorDueño" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestInsertVisita">
+      <soap:operation soapAction="http://tempuri.org/TestInsertVisita" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -488,13 +617,49 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetVisitasDelDiaPorVeterinaria">
+      <soap12:operation soapAction="http://tempuri.org/GetVisitasDelDiaPorVeterinaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestGetVisitasDelDia">
+      <soap12:operation soapAction="http://tempuri.org/TestGetVisitasDelDia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesPorDueño">
+      <soap12:operation soapAction="http://tempuri.org/GetAnimalesPorDueño" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestInsertVisita">
+      <soap12:operation soapAction="http://tempuri.org/TestInsertVisita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MiVetService">
     <wsdl:port name="MiVetServiceSoap" binding="tns:MiVetServiceSoap">
-      <soap:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
+      <soap:address location="http://localhost:50324/MiVetService.asmx" />
     </wsdl:port>
     <wsdl:port name="MiVetServiceSoap12" binding="tns:MiVetServiceSoap12">
-      <soap12:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
+      <soap12:address location="http://localhost:50324/MiVetService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
