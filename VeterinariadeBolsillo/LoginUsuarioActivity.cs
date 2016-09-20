@@ -62,8 +62,8 @@ namespace VeterinariadeBolsillo
 
         private void BtLogin_Click(object sender, EventArgs e)
         {
-            txUsuario.SetText("vetadmin", TextView.BufferType.Normal);
-            txPassword.SetText("Password1", TextView.BufferType.Normal);
+            //txUsuario.SetText("vetadmin", TextView.BufferType.Normal);
+            //txPassword.SetText("Password1", TextView.BufferType.Normal);
 
             if (string.IsNullOrEmpty(txUsuario.Text) || string.IsNullOrEmpty(txPassword.Text))
             {

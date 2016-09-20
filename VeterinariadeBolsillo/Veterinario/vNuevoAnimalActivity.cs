@@ -533,6 +533,7 @@ namespace VeterinariadeBolsillo
                 animal.Sexo = spnSexo.SelectedItemId.ToString();
                 animal.Raza = txRaza.Text;
                 animal.IdVeterinaria = vetId;
+                animal.FechaDeCreacion = DateTime.Now;
 
                 MiVetService.MiVetService ws = new MiVetService.MiVetService();
                 ws.UpsertAnimalCompleted += Ws_UpsertAnimalCompleted;

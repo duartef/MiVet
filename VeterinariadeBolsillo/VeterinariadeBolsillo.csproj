@@ -88,13 +88,14 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceHelper.cs" />
-    <Compile Include="vAnimalAdapter.cs" />
+    <Compile Include="Veterinario\vAnimalAdapter.cs" />
     <Compile Include="Veterinario\vBuscarAnimal.cs" />
     <Compile Include="Veterinario\vHomeActivity.cs" />
     <Compile Include="Veterinario\vMascotaActivity.cs" />
     <Compile Include="Veterinario\vNuevoAnimalActivity.cs" />
     <Compile Include="Veterinario\vProximasVisitasActivity.cs" />
     <Compile Include="Veterinario\vVisitaAdapter.cs" />
+    <Compile Include="Veterinario\vProgramarVisitaActivity.cs" />
     <Compile Include="Web References\MiVetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +132,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\vAnimalView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vProgramarVisita.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="Web References\MiVetService\Animal.datasource">
@@ -187,10 +191,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:50324/MiVetService.asmx">
+    <WebReferenceUrl Include="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MiVetService\</RelPath>
-      <UpdateFromURL>http://localhost:50324/MiVetService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -245,6 +249,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\glass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Fondo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Fondo3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

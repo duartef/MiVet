@@ -34,6 +34,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
           <s:element minOccurs="1" maxOccurs="1" name="IdVeterinaria" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Raza" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaDeCreacion" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Mascota">
@@ -656,10 +657,10 @@
   </wsdl:binding>
   <wsdl:service name="MiVetService">
     <wsdl:port name="MiVetServiceSoap" binding="tns:MiVetServiceSoap">
-      <soap:address location="http://localhost:50324/MiVetService.asmx" />
+      <soap:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
     </wsdl:port>
     <wsdl:port name="MiVetServiceSoap12" binding="tns:MiVetServiceSoap12">
-      <soap12:address location="http://localhost:50324/MiVetService.asmx" />
+      <soap12:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

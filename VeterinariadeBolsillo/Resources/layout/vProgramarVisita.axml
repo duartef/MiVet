@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/Background">
     <TextView
-        android:text="Nueva Mascota!"
+        android:text="Programar Visita!"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,78 +16,24 @@
         android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp" />
     <EditText
-        android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txNombre"
-        android:hint="Nombre"
-        android:layout_margin="5dp"
-        android:capitalize="words" />
-    <AutoCompleteTextView
+        android:id="@+id/txVisita"
+        android:hint="Visita"
+        android:layout_margin="5dp" />
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txEspecie"
-        android:hint="Especie"
-        android:layout_margin="5dp"
-        android:capitalize="words" />
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txRaza"
-        android:hint="Raza"
-        android:layout_margin="5dp"
-        android:capitalize="words" />
-    <Spinner
-        android:layout_width="150dp"
-        android:layout_height="36dp"
-        android:id="@+id/spnSexo"
-        android:layout_margin="5dp"
-        android:layout_gravity="center_vertical"
-        android:textAlignment="gravity" />
+        android:id="@+id/txComentariosInternos"
+        android:hint="Comentarios Internos"
+        android:layout_margin="5dp" />
     <EditText
         android:inputType="date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txFechaNacimiento"
-        android:hint="Fecha Nacimiento"
+        android:id="@+id/txFechaVisita"
+        android:hint="Fecha Próxima Visita"
         android:layout_margin="5dp" />
-    <EditText
-        android:inputType="numberSigned"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txDocDueño"
-        android:hint="Documento Dueño"
-        android:layout_margin="5dp" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1"
-        android:layout_margin="10dp">
-        <Space
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:id="@+id/space1"
-            android:layout_gravity="left"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_height="36dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp" />
-        <Button
-            android:text="Foto"
-            android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:id="@+id/btCamera"
-            android:layout_gravity="right"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_height="36dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:textColor="#FFFFFF"
-            android:background="#0277BD" />
-    </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

@@ -49,10 +49,22 @@ namespace VeterinariadeBolsillo
             txVisita = FindViewById<TextView>(Resource.Id.txVisita);
             txComentariosInternos = FindViewById<TextView>(Resource.Id.txComentariosInternos);
 
-            int lAnimalId = Intent.GetIntExtra("animalId", 0);
-            int lVisitaId = Intent.GetIntExtra("visitaId", 0);
-            Visita = JsonConvert.DeserializeObject<Visita>(Intent.GetStringExtra("visita"));
-            Animal = JsonConvert.DeserializeObject<Animal>(Intent.GetStringExtra("animal"));
+            //int lAnimalId = Intent.GetIntExtra("animalId", 0);
+            //int lVisitaId = Intent.GetIntExtra("visitaId", 0);
+            try
+            {
+                Visita = JsonConvert.DeserializeObject<Visita>(Intent.GetStringExtra("visita"));
+            }
+            catch (Exception)
+            {
+            }
+            try
+            {
+                Animal = JsonConvert.DeserializeObject<Animal>(Intent.GetStringExtra("animal"));
+            }
+            catch (Exception)
+            {
+            }
 
             if (Animal != null)
             {
@@ -92,8 +104,6 @@ namespace VeterinariadeBolsillo
 
             try
             {
-                //ToDo: Setear la imagen que existe del animal, agregar una Raza en animal, agregar ComentariosInternos en Visita
-
                 //set Image
                 if (Animal.Foto != null)
                 {
@@ -138,7 +148,10 @@ namespace VeterinariadeBolsillo
 
         private void BtProgramarVisita_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
+            Intent intent = new Intent(this, typeof(vProgramarVisitaActivity));
+            intent.PutExtra("animal", JsonConvert.SerializeObject(Animal));
+            StartActivity(intent);
+            this.Finish();
         }
     }
 }

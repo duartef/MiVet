@@ -81,8 +81,8 @@ namespace VeterinariadeBolsillo
                 //animales = dm.GetTable<lAnimal>().Where(x => x.Documento == dni).ToList();
 
                 //Toast.MakeText(this, "Llenar el listView", ToastLength.Short).Show();
-                lstAnimales.Adapter = null;
-                lstAnimales.Adapter = new vAnimalAdapter(this, animales);
+                //lstAnimales.Adapter = null;
+                //lstAnimales.Adapter = new vAnimalAdapter(this, animales);
             }
             catch (Exception ex)
             {
@@ -97,7 +97,10 @@ namespace VeterinariadeBolsillo
                 mProgress.Dismiss();
                 animales = (List<Animal>)e.Result.ToList();
                 lstAnimales.Adapter = null;
-                lstAnimales.Adapter = new vAnimalAdapter(this, animales);
+                if (animales != null && animales.Count > 0)
+                {
+                    lstAnimales.Adapter = new vAnimalAdapter(this, animales);
+                }
             }
             catch (Exception)
             {

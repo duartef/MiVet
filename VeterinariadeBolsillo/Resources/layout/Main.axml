@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-              android:id="@+id/baseLinear">
+    android:id="@+id/baseLinear"
+    android:background="@drawable/Background">
     <Button
         android:id="@+id/MyButton"
         android:layout_width="match_parent"

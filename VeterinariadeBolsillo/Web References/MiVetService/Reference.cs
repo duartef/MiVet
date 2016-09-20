@@ -61,7 +61,7 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         /// <remarks/>
         public MiVetService() {
-            this.Url = "http://localhost:50324/MiVetService.asmx";
+            this.Url = "http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -593,6 +593,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         private string razaField;
         
+        private System.DateTime fechaDeCreacionField;
+        
         /// <remarks/>
         public int Id {
             get {
@@ -681,6 +683,16 @@ namespace VeterinariadeBolsillo.MiVetService {
             }
             set {
                 this.razaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime FechaDeCreacion {
+            get {
+                return this.fechaDeCreacionField;
+            }
+            set {
+                this.fechaDeCreacionField = value;
             }
         }
     }
