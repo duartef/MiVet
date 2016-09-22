@@ -143,6 +143,9 @@ namespace VeterinariadeBolsillo
 
         private void BtIndicaciones_Click(object sender, EventArgs e)
         {
+            Intent intent = new Intent(this, typeof(vIndicacionActivity));
+            intent.PutExtra("animalid", Animal.Id);
+            StartActivity(intent);
             Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
         }
 

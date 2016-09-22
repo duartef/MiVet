@@ -6,5 +6,7 @@
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
+	<uses-permission android:name="android.permission.READ_CALENDAR" />
 	<application android:label="VeterinariadeBolsillo" android:theme="@style/MyCustomTheme" android:icon="@drawable/Icono"></application>
 </manifest>

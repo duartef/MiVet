@@ -96,6 +96,7 @@
     <Compile Include="Veterinario\vProximasVisitasActivity.cs" />
     <Compile Include="Veterinario\vVisitaAdapter.cs" />
     <Compile Include="Veterinario\vProgramarVisitaActivity.cs" />
+    <Compile Include="vIndicacionActivity.cs" />
     <Compile Include="Web References\MiVetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +136,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\vProgramarVisita.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vIndicacion.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="Web References\MiVetService\Animal.datasource">
@@ -258,6 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Fondo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\list.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

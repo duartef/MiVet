@@ -19,13 +19,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txVisita"
-        android:hint="Visita"
+        android:hint="Actividad"
         android:layout_margin="5dp" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txComentariosInternos"
-        android:hint="Comentarios Internos"
+        android:hint="Observaciones"
         android:layout_margin="5dp" />
     <EditText
         android:inputType="date"
