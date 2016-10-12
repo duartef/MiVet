@@ -25,7 +25,7 @@ namespace MiVetService
         }
 
         [WebMethod]
-        public void Test(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis)
+        public void Test(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis, Indicacion i)
         {
 
         }
@@ -178,6 +178,42 @@ namespace MiVetService
                     else
                     {
                         throw new Exception("No se pudo actualizar el mascota");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public Indicacion UpsertIndicacion(Indicacion indicacion)
+        {
+            try
+            {
+                if (indicacion.Id == 0)
+                {
+                    indicacion.Id = DAOBase.GetNextId(indicacion);
+                    if (DAOBase.CreateEntity(indicacion))
+                    {
+                        return indicacion;
+                    }
+                    else
+                    {
+                        throw new Exception("No se pudo insertar la indicacion");
+                    }
+                }
+                else
+                {
+                    if (DAOBase.UpdateEntity(indicacion))
+                    {
+                        return indicacion;
+                    }
+                    else
+                    {
+                        throw new Exception("No se pudo actualizar la indicacion");
                     }
 
                 }

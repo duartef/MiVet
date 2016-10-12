@@ -63,6 +63,7 @@
     <Compile Include="DAOs\AnimalDAO.cs" />
     <Compile Include="DAOs\DAOBase.cs" />
     <Compile Include="DTOs\Animal.cs" />
+    <Compile Include="DTOs\Indicacion.cs" />
     <Compile Include="DTOs\Mascota.cs" />
     <Compile Include="DAOs\MascotaDAO.cs" />
     <Compile Include="MiVetService.asmx.cs">
@@ -76,7 +77,7 @@
     <Compile Include="DTOs\Visita.cs" />
     <Compile Include="DAOs\VeterinariaDAO.cs" />
     <Compile Include="DAOs\VisitaDAO.cs" />
-    <Compile Include="VisitAnimal.cs" />
+    <Compile Include="DTOs\VisitAnimal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\MiVetService.pubxml" />
