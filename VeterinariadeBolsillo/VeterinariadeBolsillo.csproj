@@ -96,7 +96,7 @@
     <Compile Include="Veterinario\vProximasVisitasActivity.cs" />
     <Compile Include="Veterinario\vVisitaAdapter.cs" />
     <Compile Include="Veterinario\vProgramarVisitaActivity.cs" />
-    <Compile Include="vIndicacionActivity.cs" />
+    <Compile Include="Veterinario\vIndicacionActivity.cs" />
     <Compile Include="Web References\MiVetService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -142,6 +142,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <None Include="Web References\MiVetService\Animal.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MiVetService\Indicacion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\MiVetService\Mascota.datasource">
@@ -195,10 +198,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx">
+    <WebReferenceUrl Include="http://localhost:50324/MiVetService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MiVetService\</RelPath>
-      <UpdateFromURL>http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:50324/MiVetService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

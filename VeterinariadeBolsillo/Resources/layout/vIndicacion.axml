@@ -5,13 +5,63 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:text="Button"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btIndicacion" />
-    <ListView
-      android:id="@android:id/android:list"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/txFechaInicio"
+        android:hint="Fecha de Inicio"
+        android:layout_margin="5dp"
+        android:inputType="date" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Hora de Inicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:id="@+id/txHoraInicio"
+        android:inputType="number" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Frecuencia en Horas"
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txFrecuencia"
+        android:inputType="number" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="Duración en Días"
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txDuracion"
+        android:inputType="number" />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txDescripcion"
+        android:hint="Descripción" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="Cancelar"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:id="@+id/btCancelar" />
+        <Button
+            android:text="Guardar"
+            android:layout_margin="5dp"
+            android:id="@+id/btGuardar"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

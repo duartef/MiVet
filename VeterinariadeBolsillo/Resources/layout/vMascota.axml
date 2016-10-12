@@ -80,7 +80,7 @@
                 android:layout_margin="5dp" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+<!--<LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -163,6 +163,58 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="center" />
+        </LinearLayout>
+    </LinearLayout>-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout5">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/linearLayout6">
+            <Button
+                android:text="Programar Visitas"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:id="@+id/btProgramarVisita"
+                android:layout_gravity="center" />
+            <Button
+                android:text="Indicaciones"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:id="@+id/btIndicaciones"
+                android:layout_gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/linearLayout7">
+            <Button
+                android:text="Próximas Visitas"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:id="@+id/btProximasVisitas"
+                android:layout_gravity="center" />
+            <Button
+                android:text="Actualizar Animal"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:id="@+id/btEditarAnimal"
+                android:layout_gravity="center" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -97,13 +97,13 @@ namespace VeterinariadeBolsillo
                 PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
             return availableActivities != null && availableActivities.Count > 0;
         }
-        
+
         private void BtCamera_Click(object sender, EventArgs e)
         {
 
             CreateDirectoryForPictures();
 
-            App._file = new File(App._dir, String.Format("mascota_{0}.jpg", Guid.NewGuid()));
+            Mierda._file = new File(Mierda._dir, String.Format("mascota_{0}.jpg", Guid.NewGuid()));
             //intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(App._file));
             //StartActivityForResult(intent, 0);
 
@@ -115,7 +115,7 @@ namespace VeterinariadeBolsillo
                     Android.Provider.MediaStore.Images.Media.ExternalContentUri);
             Intent takePhotoIntent = new Intent(MediaStore.ActionImageCapture);
             takePhotoIntent.PutExtra("return-data", true);
-            takePhotoIntent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(App._file));
+            takePhotoIntent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(Mierda._file));
             intentList = addIntentsToList(this, intentList, pickIntent);
             intentList = addIntentsToList(this, intentList, takePhotoIntent);
 
@@ -128,7 +128,7 @@ namespace VeterinariadeBolsillo
 
             StartActivityForResult(chooserIntent, 0);
         }
-        
+
         private static List<Intent> addIntentsToList(Context context, List<Intent> list, Intent intent)
         {
             IList<ResolveInfo> resInfo = context.PackageManager.QueryIntentActivities(intent, 0);
@@ -164,12 +164,12 @@ namespace VeterinariadeBolsillo
 
         private void CreateDirectoryForPictures()
         {
-            App._dir = new File(
+            Mierda._dir = new File(
                 Android.OS.Environment.GetExternalStoragePublicDirectory(
                     Android.OS.Environment.DirectoryPictures), "MiVet");
-            if (!App._dir.Exists())
+            if (!Mierda._dir.Exists())
             {
-                App._dir.Mkdirs();
+                Mierda._dir.Mkdirs();
             }
         }
 
@@ -209,11 +209,11 @@ namespace VeterinariadeBolsillo
                             if (data != null && data.Data != null)
                             {
                                 contentUri = data.Data;
-                                App._file = new File(GetImagePath(contentUri));
+                                Mierda._file = new File(GetImagePath(contentUri));
                             }
                             else
                             {
-                                contentUri = Android.Net.Uri.FromFile(App._file);
+                                contentUri = Android.Net.Uri.FromFile(Mierda._file);
                             }
                             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
                             //Android.Net.Uri contentUri = data.Data;//Android.Net.Uri.FromFile(data.Data);
@@ -226,15 +226,55 @@ namespace VeterinariadeBolsillo
 
                             int height = Resources.DisplayMetrics.HeightPixels;
                             int width = Resources.DisplayMetrics.WidthPixels;
-                            App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
-                            if (App.bitmap != null)
+
+                            //using (Mi)
+                            //{
+
+                            //}
+
+
+
+
+
+                            //Mierda.bitmap = Mierda._file.Path.LoadAndResizeBitmap(width, height);
+                            //BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
+                            //using (var image = BitmapFactory.DecodeFile(Mierda._file.Path, options))
+                            //{
+                            //    //if (image != null)
+                            //    {
+                            //        int outHeight = options.OutHeight;
+                            //        int outWidth = options.OutWidth;
+
+                            //        while (outWidth > 1000)
+                            //        {
+                            //            outHeight /= 2;
+                            //            outWidth /= 2;
+                            //        }
+
+                            //        using (var bitmapScaled = Bitmap.CreateScaledBitmap(image, outHeight, outWidth, true))
+                            //        {
+                            //            using (System.IO.MemoryStream outStream = new System.IO.MemoryStream())
+                            //            {
+                            //                bitmapScaled.Compress(Bitmap.CompressFormat.Jpeg, 50, outStream);
+                            //                animal.Foto = outStream.ToArray();
+                            //                outStream.Close();
+                            //                outStream.Dispose();
+                            //            }
+                            //            bitmapScaled.Recycle();
+                            //        }
+                            //    }
+
+                            //}
+
+                            Mierda.bitmap = Mierda._file.Path.LoadAndResizeBitmap(width, height);
+                            if (Mierda.bitmap != null)
                             {
                                 //_imageView.SetImageBitmap(App.bitmap);
                                 //App.bitmap = null;
                                 byte[] byteArray = new byte[0];
                                 using (System.IO.MemoryStream stream = new System.IO.MemoryStream())
                                 {
-                                    App.bitmap.Compress(Bitmap.CompressFormat.Jpeg, 25, stream);
+                                    Mierda.bitmap.Compress(Bitmap.CompressFormat.Jpeg, 25, stream);
                                     animal.Foto = stream.ToArray();
                                     stream.Close();
                                     stream.Dispose();
@@ -242,13 +282,13 @@ namespace VeterinariadeBolsillo
                             }
 
                             // Dispose of the Java side bitmap.
-                            App.bitmap.Dispose();
-                            App._dir.Dispose();
-                            App._file.Dispose();
+                            Mierda.bitmap.Dispose();
+                            Mierda._dir.Dispose();
+                            Mierda._file.Dispose();
 
                             GC.Collect();
 
-                            Toast.MakeText(this, "Se adjunto bien la imagen!", ToastLength.Short);
+                            Toast.MakeText(this, "Se adjunto bien la imagen!", ToastLength.Short).Show();
                         }
                         catch (Exception)
                         {
@@ -584,7 +624,7 @@ namespace VeterinariadeBolsillo
         }
     }
 
-    public static class App
+    public static class Mierda
     {
         public static File _file;
         public static File _dir;

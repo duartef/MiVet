@@ -23,7 +23,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="MiVetServiceSoap", Namespace="http://tempuri.org/")]
@@ -43,6 +43,8 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         private System.Threading.SendOrPostCallback UpsertMascotaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback UpsertIndicacionOperationCompleted;
+        
         private System.Threading.SendOrPostCallback UpsertAnimalOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetVisitasDeLaVeterinariaOperationCompleted;
@@ -61,7 +63,7 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         /// <remarks/>
         public MiVetService() {
-            this.Url = "http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx";
+            this.Url = "http://localhost:50324/MiVetService.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -117,6 +119,9 @@ namespace VeterinariadeBolsillo.MiVetService {
         public event UpsertMascotaCompletedEventHandler UpsertMascotaCompleted;
         
         /// <remarks/>
+        public event UpsertIndicacionCompletedEventHandler UpsertIndicacionCompleted;
+        
+        /// <remarks/>
         public event UpsertAnimalCompletedEventHandler UpsertAnimalCompleted;
         
         /// <remarks/>
@@ -166,22 +171,23 @@ namespace VeterinariadeBolsillo.MiVetService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Test", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void Test(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis) {
+        public void Test(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis, Indicacion i) {
             this.Invoke("Test", new object[] {
                         a,
                         m,
                         p,
                         v,
-                        vis});
+                        vis,
+                        i});
         }
         
         /// <remarks/>
-        public void TestAsync(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis) {
-            this.TestAsync(a, m, p, v, vis, null);
+        public void TestAsync(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis, Indicacion i) {
+            this.TestAsync(a, m, p, v, vis, i, null);
         }
         
         /// <remarks/>
-        public void TestAsync(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis, object userState) {
+        public void TestAsync(Animal a, Mascota m, Persona p, Veterinaria v, Visita vis, Indicacion i, object userState) {
             if ((this.TestOperationCompleted == null)) {
                 this.TestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTestOperationCompleted);
             }
@@ -190,7 +196,8 @@ namespace VeterinariadeBolsillo.MiVetService {
                         m,
                         p,
                         v,
-                        vis}, this.TestOperationCompleted, userState);
+                        vis,
+                        i}, this.TestOperationCompleted, userState);
         }
         
         private void OnTestOperationCompleted(object arg) {
@@ -344,6 +351,35 @@ namespace VeterinariadeBolsillo.MiVetService {
             if ((this.UpsertMascotaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UpsertMascotaCompleted(this, new UpsertMascotaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpsertIndicacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public Indicacion UpsertIndicacion(Indicacion indicacion) {
+            object[] results = this.Invoke("UpsertIndicacion", new object[] {
+                        indicacion});
+            return ((Indicacion)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpsertIndicacionAsync(Indicacion indicacion) {
+            this.UpsertIndicacionAsync(indicacion, null);
+        }
+        
+        /// <remarks/>
+        public void UpsertIndicacionAsync(Indicacion indicacion, object userState) {
+            if ((this.UpsertIndicacionOperationCompleted == null)) {
+                this.UpsertIndicacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpsertIndicacionOperationCompleted);
+            }
+            this.InvokeAsync("UpsertIndicacion", new object[] {
+                        indicacion}, this.UpsertIndicacionOperationCompleted, userState);
+        }
+        
+        private void OnUpsertIndicacionOperationCompleted(object arg) {
+            if ((this.UpsertIndicacionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpsertIndicacionCompleted(this, new UpsertIndicacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -568,7 +604,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -698,7 +734,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -731,7 +767,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -812,7 +848,100 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Indicacion {
+        
+        private int idField;
+        
+        private int animalIdField;
+        
+        private System.DateTime fechaInicioField;
+        
+        private int horaInicioField;
+        
+        private int frecuenciaField;
+        
+        private int duracionField;
+        
+        private string descripcionField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int AnimalId {
+            get {
+                return this.animalIdField;
+            }
+            set {
+                this.animalIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime FechaInicio {
+            get {
+                return this.fechaInicioField;
+            }
+            set {
+                this.fechaInicioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int HoraInicio {
+            get {
+                return this.horaInicioField;
+            }
+            set {
+                this.horaInicioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Frecuencia {
+            get {
+                return this.frecuenciaField;
+            }
+            set {
+                this.frecuenciaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Duracion {
+            get {
+                return this.duracionField;
+            }
+            set {
+                this.duracionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -905,7 +1034,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -974,7 +1103,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1067.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1019,11 +1148,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1045,15 +1174,15 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void TestCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void LogInCompletedEventHandler(object sender, LogInCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class LogInCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1075,11 +1204,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpsertVisitaCompletedEventHandler(object sender, UpsertVisitaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UpsertVisitaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1101,11 +1230,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpsertVeterinariaCompletedEventHandler(object sender, UpsertVeterinariaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UpsertVeterinariaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1127,11 +1256,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpsertPersonaCompletedEventHandler(object sender, UpsertPersonaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UpsertPersonaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1153,11 +1282,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpsertMascotaCompletedEventHandler(object sender, UpsertMascotaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UpsertMascotaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1179,11 +1308,37 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void UpsertIndicacionCompletedEventHandler(object sender, UpsertIndicacionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpsertIndicacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpsertIndicacionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Indicacion Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Indicacion)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void UpsertAnimalCompletedEventHandler(object sender, UpsertAnimalCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UpsertAnimalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1205,11 +1360,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetVisitasDeLaVeterinariaCompletedEventHandler(object sender, GetVisitasDeLaVeterinariaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVisitasDeLaVeterinariaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1231,11 +1386,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetAnimalesDeLaVeterinariaCompletedEventHandler(object sender, GetAnimalesDeLaVeterinariaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAnimalesDeLaVeterinariaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1257,11 +1412,11 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetVisitasDelDiaPorVeterinariaCompletedEventHandler(object sender, GetVisitasDelDiaPorVeterinariaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVisitasDelDiaPorVeterinariaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1283,15 +1438,15 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void TestGetVisitasDelDiaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void GetAnimalesPorDueñoCompletedEventHandler(object sender, GetAnimalesPorDueñoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAnimalesPorDueñoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1313,7 +1468,7 @@ namespace VeterinariadeBolsillo.MiVetService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void TestInsertVisitaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 

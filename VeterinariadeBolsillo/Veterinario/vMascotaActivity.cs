@@ -93,13 +93,13 @@ namespace VeterinariadeBolsillo
 
             
 
-            ImageView btProgramarVisita = FindViewById<ImageView>(Resource.Id.btProgramarVisita);
+            Button btProgramarVisita = FindViewById<Button>(Resource.Id.btProgramarVisita);
             btProgramarVisita.Click += BtProgramarVisita_Click;
-            ImageView btIndicaciones = FindViewById<ImageView>(Resource.Id.btIndicaciones);
+            Button btIndicaciones = FindViewById<Button>(Resource.Id.btIndicaciones);
             btIndicaciones.Click += BtIndicaciones_Click;
-            ImageView btProximasVisitas = FindViewById<ImageView>(Resource.Id.btProximasVisitas);
+            Button btProximasVisitas = FindViewById<Button>(Resource.Id.btProximasVisitas);
             btProximasVisitas.Click += BtProximasVisitas_Click;
-            ImageView btEditarAnimal = FindViewById<ImageView>(Resource.Id.btEditarAnimal);
+            Button btEditarAnimal = FindViewById<Button>(Resource.Id.btEditarAnimal);
             btEditarAnimal.Click += BtEditarAnimal_Click;
 
             try
@@ -146,7 +146,7 @@ namespace VeterinariadeBolsillo
             Intent intent = new Intent(this, typeof(vIndicacionActivity));
             intent.PutExtra("animalid", Animal.Id);
             StartActivity(intent);
-            Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
+            //Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
         }
 
         private void BtProgramarVisita_Click(object sender, EventArgs e)
