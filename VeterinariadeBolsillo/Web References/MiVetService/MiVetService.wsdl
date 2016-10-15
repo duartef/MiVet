@@ -226,6 +226,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetProximasVisitasDelAnimal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="animalId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProximasVisitasDelAnimalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProximasVisitasDelAnimalResult" type="tns:ArrayOfVisita" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetVisitasDelDiaPorVeterinaria">
         <s:complexType>
           <s:sequence>
@@ -347,6 +362,12 @@
   <wsdl:message name="GetAnimalesDeLaVeterinariaSoapOut">
     <wsdl:part name="parameters" element="tns:GetAnimalesDeLaVeterinariaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetProximasVisitasDelAnimalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProximasVisitasDelAnimal" />
+  </wsdl:message>
+  <wsdl:message name="GetProximasVisitasDelAnimalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProximasVisitasDelAnimalResponse" />
+  </wsdl:message>
   <wsdl:message name="GetVisitasDelDiaPorVeterinariaSoapIn">
     <wsdl:part name="parameters" element="tns:GetVisitasDelDiaPorVeterinaria" />
   </wsdl:message>
@@ -415,6 +436,10 @@
     <wsdl:operation name="GetAnimalesDeLaVeterinaria">
       <wsdl:input message="tns:GetAnimalesDeLaVeterinariaSoapIn" />
       <wsdl:output message="tns:GetAnimalesDeLaVeterinariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProximasVisitasDelAnimal">
+      <wsdl:input message="tns:GetProximasVisitasDelAnimalSoapIn" />
+      <wsdl:output message="tns:GetProximasVisitasDelAnimalSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetVisitasDelDiaPorVeterinaria">
       <wsdl:input message="tns:GetVisitasDelDiaPorVeterinariaSoapIn" />
@@ -527,6 +552,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAnimalesDeLaVeterinaria">
       <soap:operation soapAction="http://tempuri.org/GetAnimalesDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProximasVisitasDelAnimal">
+      <soap:operation soapAction="http://tempuri.org/GetProximasVisitasDelAnimal" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -665,6 +699,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAnimalesDeLaVeterinaria">
       <soap12:operation soapAction="http://tempuri.org/GetAnimalesDeLaVeterinaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProximasVisitasDelAnimal">
+      <soap12:operation soapAction="http://tempuri.org/GetProximasVisitasDelAnimal" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

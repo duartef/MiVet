@@ -32,7 +32,7 @@ namespace VeterinariadeBolsillo
         TextView txFechaNacimiento;
         TextView txVisita;
         TextView txComentariosInternos;
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -91,7 +91,7 @@ namespace VeterinariadeBolsillo
                 Toast.MakeText(this, "No se encontró la mascota dentro de la base", ToastLength.Long);
             }
 
-            
+
 
             Button btProgramarVisita = FindViewById<Button>(Resource.Id.btProgramarVisita);
             btProgramarVisita.Click += BtProgramarVisita_Click;
@@ -133,12 +133,13 @@ namespace VeterinariadeBolsillo
 
         private void BtProximasVisitas_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
+            //Toast.MakeText(this, "TODAVIA EN DESARROLLO", ToastLength.Short).Show();
 
-            //Intent intent = new Intent(this, typeof(vProximasVisitasActivity));
-            //intent.PutExtra("lAnimalId", lMascota.IdAnimal);
-            //StartActivity(intent);
-            //this.Finish();
+            Intent intent = new Intent(this, typeof(vProximasVisitasActivity));
+            intent.PutExtra("vetId", Animal.IdVeterinaria);
+            intent.PutExtra("animal", JsonConvert.SerializeObject(Animal));
+            StartActivity(intent);
+            this.Finish();
         }
 
         private void BtIndicaciones_Click(object sender, EventArgs e)
