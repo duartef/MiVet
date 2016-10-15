@@ -287,6 +287,30 @@ namespace MiVetService
         }
 
         [WebMethod]
+        public Visita[] GetProximasVisitasDelAnimal(int vetId, int animalId)
+        {
+            try
+            {
+                List<Visita> visitas = new List<Visita>();
+                string query = string.Format("SELECT * FROM Vista WHERE IdAnimal = {0} AND IdVeterinaria = {1} AND Fecha >= {2}", vetId, animalId, DateTime.Now.ToString("yyyy/MM/dd"));
+                DataTable dt = DAOBase.ExcecuteQuery(query);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Visita aux = new Visita();
+                    DAOBase.PoblarObjetoDesdeDataRow(aux, dr);
+
+                    visitas.Add(aux);
+                }
+
+                return visitas.ToArray();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [WebMethod]
         public VisitAnimal[] GetVisitasDelDiaPorVeterinaria(int vetId, DateTime fecha)
         {
             try
