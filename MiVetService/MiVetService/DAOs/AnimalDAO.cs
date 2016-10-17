@@ -51,12 +51,32 @@ namespace MiVetService
             }
         }
 
-        internal static List<Animal> GetAnimalesPorDueño(int vetId, string dni)
+        internal static List<Animal> GetAnimalesDeVeterinariaPorDueño(int vetId, string dni)
         {
             try
             {
                 List<Animal> animales = new List<Animal>();
                 DataTable dt = DAOBase.GetDataTableWhere(new Animal(), string.Format("IdVeterinaria = {0} AND Documento = {1}", vetId.ToString(), dni));
+                if (dt.Rows.Count > 0)
+                {
+                    animales = LlenarAnimales(dt);
+                }
+
+                return animales;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        internal static List<Animal> GetAnimalesPorDueño(string dni)
+        {
+            try
+            {
+                List<Animal> animales = new List<Animal>();
+                DataTable dt = DAOBase.GetDataTableWhere(new Animal(), string.Format("Documento = {1}", dni));
                 if (dt.Rows.Count > 0)
                 {
                     animales = LlenarAnimales(dt);

@@ -374,11 +374,24 @@ namespace MiVetService
         }
 
         [WebMethod]
-        public Animal[] GetAnimalesPorDueño(int vetId, string dni)
+        public Animal[] GetAnimalesDeVeterinariaPorDueño(int vetId, string dni)
         {
             try
             {
-                return AnimalDAO.GetAnimalesPorDueño(vetId, dni).ToArray();
+                return AnimalDAO.GetAnimalesDeVeterinariaPorDueño(vetId, dni).ToArray();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public Animal[] GetAnimalesPorDueño(string dni)
+        {
+            try
+            {
+                return AnimalDAO.GetAnimalesPorDueño(dni).ToArray();
             }
             catch (Exception ex)
             {
