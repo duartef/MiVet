@@ -118,6 +118,10 @@ namespace VeterinariadeBolsillo
 
 
                 MiVetService.MiVetService ws = new MiVetService.MiVetService();
+
+                //var a = ws.GetAnimalesPorDueño(dni);
+
+                //animales = a.ToList();
                 ws.GetAnimalesPorDueñoCompleted += Ws_GetAnimalesPorDueñoCompleted;
                 ws.GetAnimalesPorDueñoAsync(dni);
             }
@@ -139,10 +143,9 @@ namespace VeterinariadeBolsillo
                     lstAnimales.Adapter = new vAnimalAdapter(this, animales);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
         }
     }

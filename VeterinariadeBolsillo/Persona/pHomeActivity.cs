@@ -54,8 +54,8 @@ namespace VeterinariadeBolsillo
                     mProgress.Show();
 
                     MiVetService.MiVetService ws = new MiVetService.MiVetService();
-                    ws.GetAnimalesPorDueñoCompleted += Ws_GetAnimalesPorDueñoCompleted;
-                    ws.GetAnimalesPorDueñoAsync(persona.Documento);
+                    ws.GetMascotasCompleted += Ws_GetMascotasCompleted;
+                    ws.GetMascotasAsync(persona.Id.ToString());                    
                 }
             }
             catch (Exception ex)
@@ -71,6 +71,7 @@ namespace VeterinariadeBolsillo
                 Intent intent = new Intent(this, typeof(pAgregarMascotaActivity));
                 intent.PutExtra("persona", JsonConvert.SerializeObject(persona));
                 StartActivity(intent);
+                this.Finish();
             }
             catch (Exception ex)
             {
@@ -79,30 +80,32 @@ namespace VeterinariadeBolsillo
 
         }
 
-        private void Ws_GetAnimalesPorDueñoCompleted(object sender, GetAnimalesPorDueñoCompletedEventArgs e)
+        private void Ws_GetMascotasCompleted(object sender, GetMascotasCompletedEventArgs e)
         {
             try
             {
                 mProgress.Dismiss();
 
-                misAnimales = (List<Animal>)e.Result.ToList();
-                if (misAnimales != null)
+                if (e.Result != null)
                 {
-                    try
+                    misAnimales = (List<Animal>)e.Result.ToList();
+                    if (misAnimales != null)
                     {
-                        pMascotaAdapter adapter = new pMascotaAdapter(this, misAnimales);
-                        lstMascotas.Adapter = adapter;
+                        try
+                        {
+                            pMascotaAdapter adapter = new pMascotaAdapter(this, misAnimales);
+                            lstMascotas.Adapter = adapter;
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
                     }
-                    catch (Exception)
+                    else
                     {
-                        throw;
+                        Toast.MakeText(this, "Hubo un error :( ", ToastLength.Short).Show();
                     }
                 }
-                else
-                {
-                    Toast.MakeText(this, "Hubo un error :( ", ToastLength.Short).Show();
-                }
-
             }
             catch (Exception ex)
             {

@@ -67,6 +67,7 @@ namespace VeterinariadeBolsillo
             if (animal.Foto != null)
             {
                 img.SetImageBitmap(BitmapFactory.DecodeByteArray(animal.Foto, 0, animal.Foto.Length));
+                img.SetAdjustViewBounds(true);
             }
             //Finally return the view
             return view;

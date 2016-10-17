@@ -308,6 +308,20 @@
       <s:element name="TestInsertVisitaResponse">
         <s:complexType />
       </s:element>
+      <s:element name="GetMascotas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idPersona" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMascotasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMascotasResult" type="tns:ArrayOfAnimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -412,6 +426,12 @@
   <wsdl:message name="TestInsertVisitaSoapOut">
     <wsdl:part name="parameters" element="tns:TestInsertVisitaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetMascotasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMascotas" />
+  </wsdl:message>
+  <wsdl:message name="GetMascotasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMascotasResponse" />
+  </wsdl:message>
   <wsdl:portType name="MiVetServiceSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -480,6 +500,10 @@
     <wsdl:operation name="TestInsertVisita">
       <wsdl:input message="tns:TestInsertVisitaSoapIn" />
       <wsdl:output message="tns:TestInsertVisitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMascotas">
+      <wsdl:input message="tns:GetMascotasSoapIn" />
+      <wsdl:output message="tns:GetMascotasSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MiVetServiceSoap" type="tns:MiVetServiceSoap">
@@ -637,6 +661,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMascotas">
+      <soap:operation soapAction="http://tempuri.org/GetMascotas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MiVetServiceSoap12" type="tns:MiVetServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -786,6 +819,15 @@
     </wsdl:operation>
     <wsdl:operation name="TestInsertVisita">
       <soap12:operation soapAction="http://tempuri.org/TestInsertVisita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMascotas">
+      <soap12:operation soapAction="http://tempuri.org/GetMascotas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
