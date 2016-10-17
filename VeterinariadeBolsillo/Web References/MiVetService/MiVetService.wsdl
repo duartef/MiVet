@@ -273,10 +273,24 @@
       <s:element name="TestGetVisitasDelDiaResponse">
         <s:complexType />
       </s:element>
-      <s:element name="GetAnimalesPorDueño">
+      <s:element name="GetAnimalesDeVeterinariaPorDueño">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="vetId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnimalesDeVeterinariaPorDueñoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnimalesDeVeterinariaPorDueñoResult" type="tns:ArrayOfAnimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnimalesPorDueño">
+        <s:complexType>
+          <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="dni" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -380,6 +394,12 @@
   <wsdl:message name="TestGetVisitasDelDiaSoapOut">
     <wsdl:part name="parameters" element="tns:TestGetVisitasDelDiaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAnimalesDeVeterinariaPorDueñoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnimalesDeVeterinariaPorDueño" />
+  </wsdl:message>
+  <wsdl:message name="GetAnimalesDeVeterinariaPorDueñoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnimalesDeVeterinariaPorDueñoResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAnimalesPorDueñoSoapIn">
     <wsdl:part name="parameters" element="tns:GetAnimalesPorDueño" />
   </wsdl:message>
@@ -448,6 +468,10 @@
     <wsdl:operation name="TestGetVisitasDelDia">
       <wsdl:input message="tns:TestGetVisitasDelDiaSoapIn" />
       <wsdl:output message="tns:TestGetVisitasDelDiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeVeterinariaPorDueño">
+      <wsdl:input message="tns:GetAnimalesDeVeterinariaPorDueñoSoapIn" />
+      <wsdl:output message="tns:GetAnimalesDeVeterinariaPorDueñoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetAnimalesPorDueño">
       <wsdl:input message="tns:GetAnimalesPorDueñoSoapIn" />
@@ -579,6 +603,15 @@
     </wsdl:operation>
     <wsdl:operation name="TestGetVisitasDelDia">
       <soap:operation soapAction="http://tempuri.org/TestGetVisitasDelDia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeVeterinariaPorDueño">
+      <soap:operation soapAction="http://tempuri.org/GetAnimalesDeVeterinariaPorDueño" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -733,6 +766,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAnimalesDeVeterinariaPorDueño">
+      <soap12:operation soapAction="http://tempuri.org/GetAnimalesDeVeterinariaPorDueño" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAnimalesPorDueño">
       <soap12:operation soapAction="http://tempuri.org/GetAnimalesPorDueño" style="document" />
       <wsdl:input>
@@ -754,10 +796,10 @@
   </wsdl:binding>
   <wsdl:service name="MiVetService">
     <wsdl:port name="MiVetServiceSoap" binding="tns:MiVetServiceSoap">
-      <soap:address location="http://localhost:50324/MiVetService.asmx" />
+      <soap:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
     </wsdl:port>
     <wsdl:port name="MiVetServiceSoap12" binding="tns:MiVetServiceSoap12">
-      <soap12:address location="http://localhost:50324/MiVetService.asmx" />
+      <soap12:address location="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

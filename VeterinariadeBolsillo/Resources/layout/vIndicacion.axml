@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -13,24 +13,24 @@
         android:hint="Fecha de Inicio"
         android:layout_margin="5dp"
         android:inputType="date" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
+  <EditText
+      android:textAppearance="?android:attr/textAppearanceMedium"
         android:hint="Hora de Inicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:id="@+id/txHoraInicio"
         android:inputType="number" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
+  <EditText
+      android:textAppearance="?android:attr/textAppearanceMedium"
         android:hint="Frecuencia en Horas"
         android:layout_width="match_parent"
         android:layout_margin="5dp"
         android:layout_height="wrap_content"
         android:id="@+id/txFrecuencia"
         android:inputType="number" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
+  <EditText
+      android:textAppearance="?android:attr/textAppearanceMedium"
         android:hint="Duración en Días"
         android:layout_width="match_parent"
         android:layout_margin="5dp"

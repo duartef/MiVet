@@ -33,13 +33,13 @@ namespace VeterinariadeBolsillo
                 vet.Nombre = "vetadmin";
                 vet.Password = "Password1";
 
-                //Intent intent = new Intent(this, typeof(LoginUsuarioActivity));
-                //intent.PutExtra("vet", JsonConvert.SerializeObject(vet));
-                //StartActivity(intent);
-
-                Intent intent = new Intent(this, typeof(vIndicacionActivity));
+                Intent intent = new Intent(this, typeof(LoginUsuarioActivity));
                 intent.PutExtra("vet", JsonConvert.SerializeObject(vet));
                 StartActivity(intent);
+
+                //Intent intent = new Intent(this, typeof(vIndicacionActivity));
+                //intent.PutExtra("vet", JsonConvert.SerializeObject(vet));
+                //StartActivity(intent);
 
                 //LinearLayout baseLinear = FindViewById<LinearLayout>(Resource.Id.baseLinear);
                 //switch (count)

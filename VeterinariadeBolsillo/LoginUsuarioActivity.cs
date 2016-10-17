@@ -110,7 +110,7 @@ namespace VeterinariadeBolsillo
                 else if (resultado.GetType() == typeof(Persona))
                 {
                     Intent intent = new Intent(this, typeof(pHomeActivity));
-                    intent.PutExtra("personaId", ((Persona)resultado).Id);
+                    intent.PutExtra("persona", JsonConvert.SerializeObject(resultado));
                     intent.PutExtra("personaNombre", ((Persona)resultado).Nombre);
                     StartActivity(intent);
                 }

@@ -14,26 +14,36 @@ using Newtonsoft.Json;
 
 namespace VeterinariadeBolsillo
 {
-    [Activity(Label = "vBuscarAnimal")]
-    public class vBuscarAnimal : Activity
+    [Activity(Label = "pAgregarMascotaActivity")]
+    public class pAgregarMascotaActivity : Activity
     {
         EditText txDni;
         ListView lstAnimales;
         List<Animal> animales = new List<Animal>();
-        int vetId;
+
+        MiVetService.Persona persona;
+
         ProgressDialog mProgress;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.vBuscarAnimal);
-
-            vetId = Intent.GetIntExtra("vetId", 0);
+            SetContentView(Resource.Layout.vAgregarMascota);
 
             txDni = FindViewById<EditText>(Resource.Id.txDni);
             Button btBuscar = FindViewById<Button>(Resource.Id.btBuscar);
             btBuscar.Click += BtBuscar_Click;
             lstAnimales = FindViewById<ListView>(Resource.Id.lstAnimales);
             lstAnimales.ItemClick += LstAnimales_ItemClick;
+
+            try
+            {
+                persona = JsonConvert.DeserializeObject<Persona>(Intent.GetStringExtra("persona"));
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            }
         }
 
         private void LstAnimales_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -42,16 +52,49 @@ namespace VeterinariadeBolsillo
             {
                 Animal animalSeleccionado = animales[e.Position];
 
-                Intent intent = new Intent(this, typeof(vMascotaActivity));
-                //intent.PutExtra("animalId", animalSeleccionado.Id);
-                intent.PutExtra("animal", JsonConvert.SerializeObject(animalSeleccionado));
-                StartActivity(intent);
+                Mascota mascota = new Mascota();
+                mascota.IdAnimal = animalSeleccionado.Id;
+                mascota.IdPersona = persona.Id;
+
+                mProgress = new ProgressDialog(this);
+                mProgress.SetCancelable(false);
+                mProgress.SetTitle("Agregando a mis mascotas..");
+                mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                mProgress.Indeterminate = true;
+                mProgress.Show();
+
+                
+
+                MiVetService.MiVetService ws = new MiVetService.MiVetService();
+                ws.UpsertMascotaCompleted += Ws_UpsertMascotaCompleted;
+                ws.UpsertMascotaAsync(mascota);
             }
             catch (Exception ex)
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
-            
+        }
+
+        private void Ws_UpsertMascotaCompleted(object sender, UpsertMascotaCompletedEventArgs e)
+        {
+            try
+            {
+                mProgress.Dismiss();
+                Mascota m = (Mascota)e.Result;
+
+                if (m != null)
+                {
+                    Toast.MakeText(this, "Su mascota ya fue agregada..", ToastLength.Short).Show();
+                    Intent intent = new Intent(this, typeof(pHomeActivity));
+                    StartActivity(intent);
+                    this.Finish();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void BtBuscar_Click(object sender, EventArgs e)
@@ -75,14 +118,8 @@ namespace VeterinariadeBolsillo
 
 
                 MiVetService.MiVetService ws = new MiVetService.MiVetService();
-                ws.GetAnimalesDeVeterinariaPorDueñoCompleted += Ws_GetAnimalesDeVeterinariPorDueñoCompleted;
-                ws.GetAnimalesDeVeterinariaPorDueñoAsync(vetId, dni);
-                //DataManager dm = new DataManager();
-                //animales = dm.GetTable<lAnimal>().Where(x => x.Documento == dni).ToList();
-
-                //Toast.MakeText(this, "Llenar el listView", ToastLength.Short).Show();
-                //lstAnimales.Adapter = null;
-                //lstAnimales.Adapter = new vAnimalAdapter(this, animales);
+                ws.GetAnimalesPorDueñoCompleted += Ws_GetAnimalesPorDueñoCompleted;
+                ws.GetAnimalesPorDueñoAsync(dni);
             }
             catch (Exception ex)
             {
@@ -90,7 +127,7 @@ namespace VeterinariadeBolsillo
             }
         }
 
-        private void Ws_GetAnimalesDeVeterinariPorDueñoCompleted(object sender, GetAnimalesDeVeterinariaPorDueñoCompletedEventArgs e)
+        private void Ws_GetAnimalesPorDueñoCompleted(object sender, GetAnimalesPorDueñoCompletedEventArgs e)
         {
             try
             {

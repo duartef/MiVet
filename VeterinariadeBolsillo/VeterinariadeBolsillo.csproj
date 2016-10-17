@@ -84,7 +84,9 @@
     <Compile Include="LayoutHelper.cs" />
     <Compile Include="LoginUsuarioActivity.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="pHomeActivity.cs" />
+    <Compile Include="Persona\pAgregarMascotaActivity.cs" />
+    <Compile Include="Persona\pHomeActivity.cs" />
+    <Compile Include="Persona\pMascotaAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceHelper.cs" />
@@ -148,6 +150,12 @@
     <AndroidResource Include="Resources\layout\pRowMascota.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\pHome2.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\vAgregarMascota.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <None Include="Web References\MiVetService\Animal.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -205,10 +213,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:50324/MiVetService.asmx">
+    <WebReferenceUrl Include="http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\MiVetService\</RelPath>
-      <UpdateFromURL>http://localhost:50324/MiVetService.asmx</UpdateFromURL>
+      <UpdateFromURL>http://fabricio-001-site1.mywindowshosting.com/MiVetService/MiVetService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
