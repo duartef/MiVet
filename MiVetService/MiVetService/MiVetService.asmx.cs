@@ -352,7 +352,7 @@ namespace MiVetService
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -429,6 +429,41 @@ namespace MiVetService
             {
 
                 throw;
+            }
+        }
+
+        [WebMethod]
+        public Animal[] GetMascotas(string idPersona)
+        {
+            try
+            {
+                List<Animal> animales = new List<Animal>();
+
+                string query = "SELECT * FROM Mascota JOIN Animal ON Mascota.IdAnimal = Animal.Id WHERE Mascota.IdPersona = " + idPersona;
+                DataTable dt = DAOBase.ExcecuteQuery(query);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Animal animal = new Animal();
+
+                    animal.Id = (int)dr["IdAnimal"];
+                    animal.Documento = (string)dr["Documento"];
+                    animal.Especie = (string)dr["Especie"];
+                    animal.FechaNacimiento = (DateTime)dr["FechaNacimiento"];
+                    animal.Foto = (byte[])dr["Foto"];
+                    animal.IdVeterinaria = (int)dr["IdVeterinaria"];
+                    animal.Nombre = (string)dr["Nombre"];
+                    animal.Raza = (string)dr["Raza"];
+                    animal.Sexo = (string)dr["Sexo"];
+                    
+                    animales.Add(animal);
+                }
+
+                return animales.ToArray();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
