@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/mainMenu">
+  <item android:id="@+id/overflow" android:icon="@drawable/ic_more_vert_white" android:showAsAction="always" android:orderInCategory="400">
+    <menu>
+      <item android:id="@+id/agregarMascota" android:icon="@drawable/glass" android:showAsAction="never" android:orderInCategory="300" android:title="Agregar Mascota" />
+      <item android:id="@+id/misTurnos" android:icon="@drawable/glass" android:showAsAction="never" android:orderInCategory="500" android:title="Mis turnos" />
+      <item android:id="@+id/misIndicaciones" android:icon="@drawable/glass" android:showAsAction="never" android:orderInCategory="300" android:title="Mis indicaciones" />
+    </menu>
+  </item>
+</menu>
