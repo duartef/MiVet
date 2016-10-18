@@ -76,7 +76,7 @@ namespace MiVetService
             try
             {
                 List<Animal> animales = new List<Animal>();
-                DataTable dt = DAOBase.GetDataTableWhere(new Animal(), string.Format("Documento = {1}", dni));
+                DataTable dt = DAOBase.GetDataTableWhere(new Animal(), string.Format("Documento = {0}", dni));
                 if (dt.Rows.Count > 0)
                 {
                     animales = LlenarAnimales(dt);
