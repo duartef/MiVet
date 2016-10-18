@@ -21,7 +21,7 @@ namespace VeterinariadeBolsillo
         ListView lstAnimales;
         List<Animal> animales = new List<Animal>();
 
-        MiVetService.Persona persona;
+        Persona persona;
 
         ProgressDialog mProgress;
 
@@ -44,6 +44,14 @@ namespace VeterinariadeBolsillo
             {
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
+        }
+
+        public override void OnBackPressed()
+        {
+            this.Finish();
+            Intent intent = new Intent(this, typeof(pHomeActivity));
+            intent.PutExtra("persona", JsonConvert.SerializeObject(persona));
+            StartActivity(intent);
         }
 
         private void LstAnimales_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -86,14 +94,14 @@ namespace VeterinariadeBolsillo
                 {
                     Toast.MakeText(this, "Su mascota ya fue agregada..", ToastLength.Short).Show();
                     Intent intent = new Intent(this, typeof(pHomeActivity));
+                    intent.PutExtra("persona", JsonConvert.SerializeObject(persona));
                     StartActivity(intent);
                     this.Finish();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
         }
 
