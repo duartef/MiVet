@@ -93,6 +93,10 @@ namespace VeterinariadeBolsillo
                     Toast.MakeText(this, "En desarrollo", ToastLength.Short).Show();
                     break;
 
+                case Resource.Id.veterinarias:
+                    Toast.MakeText(this, "En desarrollo", ToastLength.Short).Show();
+                    break;
+
                 default:
                     break;
             }
