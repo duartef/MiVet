@@ -18,13 +18,19 @@ namespace VeterinariadeBolsillo
     public class pHome : Activity
     {
         Persona persona;
+        TextView txNombre;
+        ListView lstMascotas;
+        Button btAgragarMascota;
 
+        List<Animal> misAnimales;
+
+        ProgressDialog mProgress;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.pHome);
-            LayoutHelper.MakeTransparentToolBar(this);
+            SetContentView(Resource.Layout.pHome2);
+            //LayoutHelper.MakeTransparentToolBar(this);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             //Toolbar will now take on default Action Bar characteristics
@@ -35,23 +41,27 @@ namespace VeterinariadeBolsillo
             ActionBar.Title = "Mi Veterinaria!";
             toolbar.SetNavigationIcon(Resource.Drawable.LogoChico);
 
+            txNombre = FindViewById<TextView>(Resource.Id.txPersona);
+            lstMascotas = FindViewById<ListView>(Resource.Id.lstMacotas);
+            lstMascotas.ItemClick += LstMascotas_ItemClick;
+
             try
             {
                 persona = JsonConvert.DeserializeObject<Persona>(Intent.GetStringExtra("persona"));
                 if (persona != null)
                 {
-                    //txNombre.SetText(txNombre.Text.Replace("@nombre", persona.Nombre), TextView.BufferType.Normal);
+                    txNombre.SetText(txNombre.Text.Replace("@nombre", persona.Nombre), TextView.BufferType.Normal);
 
-                    //mProgress = new ProgressDialog(this);
-                    //mProgress.SetCancelable(false);
-                    //mProgress.SetTitle("Recordando cuales eran tus mascotas...");
-                    //mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
-                    //mProgress.Indeterminate = true;
-                    //mProgress.Show();
+                    mProgress = new ProgressDialog(this);
+                    mProgress.SetCancelable(false);
+                    mProgress.SetTitle("Recordando cuales eran tus mascotas...");
+                    mProgress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                    mProgress.Indeterminate = true;
+                    mProgress.Show();
 
-                    //MiVetService.MiVetService ws = new MiVetService.MiVetService();
-                    //ws.GetMascotasCompleted += Ws_GetMascotasCompleted;
-                    //ws.GetMascotasAsync(persona.Id.ToString());
+                    MiVetService.MiVetService ws = new MiVetService.MiVetService();
+                    ws.GetMascotasCompleted += Ws_GetMascotasCompleted;
+                    ws.GetMascotasAsync(persona.Id.ToString());
                 }
             }
             catch (Exception ex)
@@ -59,6 +69,44 @@ namespace VeterinariadeBolsillo
                 Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
             }
 
+        }
+
+        private void Ws_GetMascotasCompleted(object sender, GetMascotasCompletedEventArgs e)
+        {
+            try
+            {
+                mProgress.Dismiss();
+
+                if (e.Result != null)
+                {
+                    misAnimales = (List<Animal>)e.Result.ToList();
+                    if (misAnimales != null)
+                    {
+                        try
+                        {
+                            pMascotaAdapter adapter = new pMascotaAdapter(this, misAnimales);
+                            lstMascotas.Adapter = adapter;
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                    else
+                    {
+                        Toast.MakeText(this, "Hubo un error :( ", ToastLength.Short).Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(this, ex.Message, ToastLength.Short).Show();
+            }
+        }
+
+        private void LstMascotas_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            Toast.MakeText(this, "todavia en desarrollo", ToastLength.Short).Show();
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
